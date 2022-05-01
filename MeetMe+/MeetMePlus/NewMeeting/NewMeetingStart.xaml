@@ -16,7 +16,7 @@
             <TextBox x:Name="meetingAsdressTb" materialDesign:HintAssist.Hint="Address" MaxLength="10" Width="500" Height="50" Foreground="Black" Margin="0,100,0,0" FontSize="40" materialDesign:HintAssist.HelperText="Enter your address" materialDesign:HintAssist.HelperTextFontSize="20"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,120,0,0">
                 <DatePicker  x:Name="meetingDateTb" Width="250" Height="60" FontSize="20" Margin="0,0,20,0" materialDesign:HintAssist.Hint="Pick Date"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                <materialDesign:TimePicker  x:Name="meetingTimeTb" Width="200" Height="60" FontSize="20" Margin="20,0,0,0" Style="{StaticResource MaterialDesignFloatingHintTimePicker}" materialDesign:HintAssist.Hint="Pick Time" />
+                <materialDesign:TimePicker  x:Name="meetingTimeTb" Width="200" Height="60" FontSize="20" Margin="20,0,0,0" Is24Hours="True" Style="{StaticResource MaterialDesignFloatingHintTimePicker}" materialDesign:HintAssist.Hint="Pick Time" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,80,0,0">
                 <Button x:Name="nextBtn" Content="Next"  materialDesign:ButtonAssist.CornerRadius="15" Margin="10" Height="50" FontSize="30" Style="{StaticResource MaterialDesignRaisedDarkButton}" BorderThickness="0" Width="125" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Click="NextBtn_Click">

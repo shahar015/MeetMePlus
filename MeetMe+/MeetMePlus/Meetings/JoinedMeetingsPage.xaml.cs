@@ -18,19 +18,18 @@ using System.Windows.Shapes;
 namespace MeetMe_.MeetMePlus.Meetings
 {
     /// <summary>
-    /// Interaction logic for MeetingsPage.xaml
+    /// Interaction logic for JoinedMeetingsPage.xaml
     /// </summary>
-    public partial class MeetingsPage : Page
+    public partial class JoinedMeetingsPage : Page
     {
         User mainUser;
-        MeetingsList meetingsList;
-        public MeetingsPage()
+        public JoinedMeetingsPage()
         {
             InitializeComponent();
 
         }
 
-        public MeetingsPage(User user)
+        public JoinedMeetingsPage(User user)
         {
             InitializeComponent();
             mainUser = user;
@@ -41,19 +40,12 @@ namespace MeetMe_.MeetMePlus.Meetings
         {
             meetingsLst.Children.Clear();
             ServiceClient serviceClient = new ServiceClient();
-            meetingsList = serviceClient.Meetings_SelectAllBesidesUser(mainUser);
             ParticipentsInMeetingList participentInMeetings = serviceClient.ParticipentsInMeeting_SelectByUser(mainUser);
-            for (int i = 0; i < participentInMeetings.Count; i++)
+            foreach (ParticipentInMeeting participentInMeeting in participentInMeetings)
             {
-                    meetingsList.Remove(meetingsList.Find(item => item.Id == participentInMeetings[i].Meeting.Id));
-               
-            }
-            foreach (Meeting meeting1 in meetingsList)
-            {
-                MeetingCard meetingCard = new MeetingCard(mainUser, meeting1, this);
+                MeetingCard meetingCard = new MeetingCard(participentInMeeting);
                 meetingsLst.Children.Add(meetingCard);
             }
         }
-
     }
 }

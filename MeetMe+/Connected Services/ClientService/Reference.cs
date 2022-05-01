@@ -129,7 +129,7 @@ namespace MeetMe_.ClientService {
         private bool GenderField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string InterestsField;
+        private string[] InterestsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
@@ -199,7 +199,7 @@ namespace MeetMe_.ClientService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Interests {
+        public string[] Interests {
             get {
                 return this.InterestsField;
             }
@@ -284,9 +284,6 @@ namespace MeetMe_.ClientService {
     public partial class Meeting : MeetMe_.ClientService.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime CreationTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private MeetMe_.ClientService.User CreatorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -300,19 +297,6 @@ namespace MeetMe_.ClientService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime CreationTime {
-            get {
-                return this.CreationTimeField;
-            }
-            set {
-                if ((this.CreationTimeField.Equals(value) != true)) {
-                    this.CreationTimeField = value;
-                    this.RaisePropertyChanged("CreationTime");
-                }
-            }
-        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public MeetMe_.ClientService.User Creator {
@@ -646,11 +630,17 @@ namespace MeetMe_.ClientService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/User_SelectLogin", ReplyAction="http://tempuri.org/IService/User_SelectLoginResponse")]
         System.Threading.Tasks.Task<MeetMe_.ClientService.User> User_SelectLoginAsync(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/FindUsername", ReplyAction="http://tempuri.org/IService/FindUsernameResponse")]
-        MeetMe_.ClientService.User FindUsername(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/User_FindUsername", ReplyAction="http://tempuri.org/IService/User_FindUsernameResponse")]
+        MeetMe_.ClientService.User User_FindUsername(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/FindUsername", ReplyAction="http://tempuri.org/IService/FindUsernameResponse")]
-        System.Threading.Tasks.Task<MeetMe_.ClientService.User> FindUsernameAsync(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/User_FindUsername", ReplyAction="http://tempuri.org/IService/User_FindUsernameResponse")]
+        System.Threading.Tasks.Task<MeetMe_.ClientService.User> User_FindUsernameAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/User_SelectAllBesidesUser", ReplyAction="http://tempuri.org/IService/User_SelectAllBesidesUserResponse")]
+        MeetMe_.ClientService.UsersList User_SelectAllBesidesUser(MeetMe_.ClientService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/User_SelectAllBesidesUser", ReplyAction="http://tempuri.org/IService/User_SelectAllBesidesUserResponse")]
+        System.Threading.Tasks.Task<MeetMe_.ClientService.UsersList> User_SelectAllBesidesUserAsync(MeetMe_.ClientService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Meetings_SelectAll", ReplyAction="http://tempuri.org/IService/Meetings_SelectAllResponse")]
         MeetMe_.ClientService.MeetingsList Meetings_SelectAll();
@@ -663,6 +653,12 @@ namespace MeetMe_.ClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Meeting_SelectById", ReplyAction="http://tempuri.org/IService/Meeting_SelectByIdResponse")]
         System.Threading.Tasks.Task<MeetMe_.ClientService.Meeting> Meeting_SelectByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Meetings_SelectByUser", ReplyAction="http://tempuri.org/IService/Meetings_SelectByUserResponse")]
+        MeetMe_.ClientService.MeetingsList Meetings_SelectByUser(MeetMe_.ClientService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Meetings_SelectByUser", ReplyAction="http://tempuri.org/IService/Meetings_SelectByUserResponse")]
+        System.Threading.Tasks.Task<MeetMe_.ClientService.MeetingsList> Meetings_SelectByUserAsync(MeetMe_.ClientService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Meetings_Insert", ReplyAction="http://tempuri.org/IService/Meetings_InsertResponse")]
         int Meetings_Insert(MeetMe_.ClientService.Meeting meeting);
@@ -730,6 +726,12 @@ namespace MeetMe_.ClientService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Message_Delete", ReplyAction="http://tempuri.org/IService/Message_DeleteResponse")]
         System.Threading.Tasks.Task<int> Message_DeleteAsync(MeetMe_.ClientService.Message message);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Message_DeleteFromChat", ReplyAction="http://tempuri.org/IService/Message_DeleteFromChatResponse")]
+        int Message_DeleteFromChat(MeetMe_.ClientService.Chat chat);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Message_DeleteFromChat", ReplyAction="http://tempuri.org/IService/Message_DeleteFromChatResponse")]
+        System.Threading.Tasks.Task<int> Message_DeleteFromChatAsync(MeetMe_.ClientService.Chat chat);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ParticipentsInMeeting_SelectAll", ReplyAction="http://tempuri.org/IService/ParticipentsInMeeting_SelectAllResponse")]
         MeetMe_.ClientService.ParticipentsInMeetingList ParticipentsInMeeting_SelectAll();
         
@@ -741,6 +743,12 @@ namespace MeetMe_.ClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ParticipentInMeeting_SelectById", ReplyAction="http://tempuri.org/IService/ParticipentInMeeting_SelectByIdResponse")]
         System.Threading.Tasks.Task<MeetMe_.ClientService.ParticipentInMeeting> ParticipentInMeeting_SelectByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ParticipentsInMeeting_SelectByUser", ReplyAction="http://tempuri.org/IService/ParticipentsInMeeting_SelectByUserResponse")]
+        MeetMe_.ClientService.ParticipentsInMeetingList ParticipentsInMeeting_SelectByUser(MeetMe_.ClientService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ParticipentsInMeeting_SelectByUser", ReplyAction="http://tempuri.org/IService/ParticipentsInMeeting_SelectByUserResponse")]
+        System.Threading.Tasks.Task<MeetMe_.ClientService.ParticipentsInMeetingList> ParticipentsInMeeting_SelectByUserAsync(MeetMe_.ClientService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/ParticipentInMeeting_Insert", ReplyAction="http://tempuri.org/IService/ParticipentInMeeting_InsertResponse")]
         int ParticipentInMeeting_Insert(MeetMe_.ClientService.ParticipentInMeeting participentInMeeting);
@@ -807,12 +815,6 @@ namespace MeetMe_.ClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Chat_Delete", ReplyAction="http://tempuri.org/IService/Chat_DeleteResponse")]
         System.Threading.Tasks.Task<int> Chat_DeleteAsync(MeetMe_.ClientService.Chat chat);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteFromChat", ReplyAction="http://tempuri.org/IService/DeleteFromChatResponse")]
-        int DeleteFromChat(MeetMe_.ClientService.Chat chat);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteFromChat", ReplyAction="http://tempuri.org/IService/DeleteFromChatResponse")]
-        System.Threading.Tasks.Task<int> DeleteFromChatAsync(MeetMe_.ClientService.Chat chat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetIamge", ReplyAction="http://tempuri.org/IService/GetIamgeResponse")]
         byte[] GetIamge(string fileName);
@@ -964,12 +966,20 @@ namespace MeetMe_.ClientService {
             return base.Channel.User_SelectLoginAsync(username, password);
         }
         
-        public MeetMe_.ClientService.User FindUsername(string username) {
-            return base.Channel.FindUsername(username);
+        public MeetMe_.ClientService.User User_FindUsername(string username) {
+            return base.Channel.User_FindUsername(username);
         }
         
-        public System.Threading.Tasks.Task<MeetMe_.ClientService.User> FindUsernameAsync(string username) {
-            return base.Channel.FindUsernameAsync(username);
+        public System.Threading.Tasks.Task<MeetMe_.ClientService.User> User_FindUsernameAsync(string username) {
+            return base.Channel.User_FindUsernameAsync(username);
+        }
+        
+        public MeetMe_.ClientService.UsersList User_SelectAllBesidesUser(MeetMe_.ClientService.User user) {
+            return base.Channel.User_SelectAllBesidesUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<MeetMe_.ClientService.UsersList> User_SelectAllBesidesUserAsync(MeetMe_.ClientService.User user) {
+            return base.Channel.User_SelectAllBesidesUserAsync(user);
         }
         
         public MeetMe_.ClientService.MeetingsList Meetings_SelectAll() {
@@ -986,6 +996,14 @@ namespace MeetMe_.ClientService {
         
         public System.Threading.Tasks.Task<MeetMe_.ClientService.Meeting> Meeting_SelectByIdAsync(int id) {
             return base.Channel.Meeting_SelectByIdAsync(id);
+        }
+        
+        public MeetMe_.ClientService.MeetingsList Meetings_SelectByUser(MeetMe_.ClientService.User user) {
+            return base.Channel.Meetings_SelectByUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<MeetMe_.ClientService.MeetingsList> Meetings_SelectByUserAsync(MeetMe_.ClientService.User user) {
+            return base.Channel.Meetings_SelectByUserAsync(user);
         }
         
         public int Meetings_Insert(MeetMe_.ClientService.Meeting meeting) {
@@ -1076,6 +1094,14 @@ namespace MeetMe_.ClientService {
             return base.Channel.Message_DeleteAsync(message);
         }
         
+        public int Message_DeleteFromChat(MeetMe_.ClientService.Chat chat) {
+            return base.Channel.Message_DeleteFromChat(chat);
+        }
+        
+        public System.Threading.Tasks.Task<int> Message_DeleteFromChatAsync(MeetMe_.ClientService.Chat chat) {
+            return base.Channel.Message_DeleteFromChatAsync(chat);
+        }
+        
         public MeetMe_.ClientService.ParticipentsInMeetingList ParticipentsInMeeting_SelectAll() {
             return base.Channel.ParticipentsInMeeting_SelectAll();
         }
@@ -1090,6 +1116,14 @@ namespace MeetMe_.ClientService {
         
         public System.Threading.Tasks.Task<MeetMe_.ClientService.ParticipentInMeeting> ParticipentInMeeting_SelectByIdAsync(int id) {
             return base.Channel.ParticipentInMeeting_SelectByIdAsync(id);
+        }
+        
+        public MeetMe_.ClientService.ParticipentsInMeetingList ParticipentsInMeeting_SelectByUser(MeetMe_.ClientService.User user) {
+            return base.Channel.ParticipentsInMeeting_SelectByUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<MeetMe_.ClientService.ParticipentsInMeetingList> ParticipentsInMeeting_SelectByUserAsync(MeetMe_.ClientService.User user) {
+            return base.Channel.ParticipentsInMeeting_SelectByUserAsync(user);
         }
         
         public int ParticipentInMeeting_Insert(MeetMe_.ClientService.ParticipentInMeeting participentInMeeting) {
@@ -1178,14 +1212,6 @@ namespace MeetMe_.ClientService {
         
         public System.Threading.Tasks.Task<int> Chat_DeleteAsync(MeetMe_.ClientService.Chat chat) {
             return base.Channel.Chat_DeleteAsync(chat);
-        }
-        
-        public int DeleteFromChat(MeetMe_.ClientService.Chat chat) {
-            return base.Channel.DeleteFromChat(chat);
-        }
-        
-        public System.Threading.Tasks.Task<int> DeleteFromChatAsync(MeetMe_.ClientService.Chat chat) {
-            return base.Channel.DeleteFromChatAsync(chat);
         }
         
         public byte[] GetIamge(string fileName) {

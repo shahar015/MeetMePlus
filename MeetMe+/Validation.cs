@@ -27,7 +27,7 @@ namespace MeetMe_
                         return new ValidationResult(false, "Only letters and some special charecters: -");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return new ValidationResult(false, "Invalid charecters");
             }
@@ -52,11 +52,11 @@ namespace MeetMe_
                         return new ValidationResult(false, "Only letters, numbers and some special charecters: _ , .");
                 }
                 ServiceClient serviceClient = new ServiceClient();
-                User user = serviceClient.FindUsername(username);
+                User user = serviceClient.User_FindUsername(username);
                 if (user != null)
                     return new ValidationResult(false, "username already exists");
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return new ValidationResult(false, "Invalid charecters");
             }
@@ -96,7 +96,7 @@ namespace MeetMe_
                 if (!isNum)
                     return new ValidationResult(false, "Must include at least 1 number");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return new ValidationResult(false, "Invalid charecters");
             }
@@ -159,7 +159,7 @@ namespace MeetMe_
                         return new ValidationResult(false, "Only numbers");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return new ValidationResult(false, "Invalid charecters");
             }

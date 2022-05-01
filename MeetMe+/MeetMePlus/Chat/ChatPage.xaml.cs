@@ -66,7 +66,7 @@ namespace MeetMe_.MeetMePlus.Chat
             otherUser = ucc.GetUser();
             currentChat = ucc.GetChat();
             ChatTitle.Children.Clear();
-            ChatTitle.Children.Add(new ChatHeader(otherUser, currentChat));
+            ChatTitle.Children.Add(new ChatHeader(otherUser));
             messageSendArea.Visibility = Visibility.Visible;
             LoadChatText();
         }
@@ -87,9 +87,13 @@ namespace MeetMe_.MeetMePlus.Chat
         }
         public void LoadChatTextFriends(ClientService.Chat friendChat)
         {
+            otherUser = friendChat.User1;
+            if (friendChat.User1.Id==myUser.Id)
+                otherUser = friendChat.User2;
             MessagesList messages = service.Message_SelectByChat(friendChat);
             messages.Sort((x, y) => DateTime.Compare(x.SendingTime, y.SendingTime));
-
+            ChatTitle.Children.Clear();
+            ChatTitle.Children.Add(new ChatHeader(otherUser));
             ViewMessages.Children.Clear();
             foreach (ClientService.Message message in messages)
             {

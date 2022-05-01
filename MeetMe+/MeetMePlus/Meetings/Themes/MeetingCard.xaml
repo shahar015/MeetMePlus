@@ -77,6 +77,48 @@
                         </Button.Background>
                     </Button>
                 </Grid>
+                <Button x:Name="EditBtn" Grid.Column="2" BorderBrush="Transparent" materialDesign:ButtonAssist.CornerRadius="1000"
+                        Margin="0,0,10,0"
+                          Width="100"
+                            Height="100" Click="EditBtn_Click">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Offset="0" Color="#FF009CFF" />
+                            <GradientStop Offset="1" Color="#FF0067FB" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <StackPanel>
+                        <materialDesign:PackIcon
+                            Width="50"
+                            Height="50"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                            Foreground="White"
+                            Kind="Edit" />
+                        <TextBlock TextAlignment="Center" Foreground="White" Text="Edit Meeting" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="LeaveBtn" Grid.Column="2" BorderBrush="Transparent" materialDesign:ButtonAssist.CornerRadius="1000"
+                        Margin="0,0,10,0"
+                          Width="100"
+                            Height="100" Click="LeaveBtn_Click">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                <GradientStop Offset="0" Color="#FF009CFF" />
+                                <GradientStop Offset="1" Color="#FF0067FB" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    <StackPanel>
+                        <materialDesign:PackIcon
+                            Width="50"
+                            Height="50"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                            Foreground="White"
+                            Kind="Minus" />
+                        <TextBlock TextAlignment="Center" Foreground="White" Text="Leave Meeting" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                    </StackPanel>
+                </Button>
                 <Button x:Name="joinBtn" Grid.Column="2" BorderBrush="Transparent" materialDesign:ButtonAssist.CornerRadius="1000"
                         Margin="0,0,10,0"
                           Width="100"

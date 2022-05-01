@@ -25,20 +25,51 @@ namespace MeetMe_.MeetMePlus.Meetings.Themes
         User mainUser;
         Meeting mainMeeting;
         MeetingsPage mainMeetingPage;
-        public MeetingCard()
-        {
-            InitializeComponent();
-        }
+        ServiceClient serviceClient = new ServiceClient();
+        ParticipentInMeeting mainPIM;
+
         public MeetingCard(User user, Meeting meeting, MeetingsPage meetingPage)
         {
             InitializeComponent();
             mainMeeting = meeting;
             mainUser = user;
             this.DataContext = mainMeeting;
+            
+            LeaveBtn.Visibility = Visibility.Hidden;
+            EditBtn.Visibility = Visibility.Visible;
+            joinBtn.Visibility = Visibility.Visible;
             mainMeetingPage = meetingPage;
             profPic.ImageSource = (BitmapImage)ImageUtils.LoadProfPic(mainMeeting.Creator);
             
         }
+
+        public MeetingCard(User user, Meeting meeting)
+        {
+            InitializeComponent();
+            mainMeeting = meeting;
+            mainUser = user;
+            this.DataContext = mainMeeting;
+            joinBtn.Visibility=Visibility.Hidden;
+            LeaveBtn.Visibility=Visibility.Hidden;
+            EditBtn.Visibility=Visibility.Visible;
+            profPic.ImageSource = (BitmapImage)ImageUtils.LoadProfPic(mainMeeting.Creator);
+
+        }
+
+        public MeetingCard(ParticipentInMeeting participentInMeeting)
+        {
+            InitializeComponent();
+            mainMeeting = participentInMeeting.Meeting;
+            mainUser = participentInMeeting.Participent;
+            mainPIM = participentInMeeting;
+            this.DataContext = mainMeeting;
+            joinBtn.Visibility = Visibility.Hidden;
+            EditBtn.Visibility = Visibility.Hidden;
+            LeaveBtn.Visibility = Visibility.Visible;
+            profPic.ImageSource = (BitmapImage)ImageUtils.LoadProfPic(mainMeeting.Creator);
+
+        }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -48,7 +79,7 @@ namespace MeetMe_.MeetMePlus.Meetings.Themes
 
         private void joinBtn_Click(object sender, RoutedEventArgs e)
         {
-            ServiceClient serviceClient = new ServiceClient();
+            
             ParticipentInMeeting participentInMeeting = new ParticipentInMeeting();
             participentInMeeting.Meeting = mainMeeting;
             participentInMeeting.Participent = mainUser;
@@ -56,6 +87,21 @@ namespace MeetMe_.MeetMePlus.Meetings.Themes
             if (i!=0)
             MessageBox.Show("Added successfuly", "Success");
             mainMeetingPage.Load();
+        }
+
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            EditMeetingWindow win = new EditMeetingWindow(mainMeeting);
+            win.ShowDialog();
+            mainMeeting = serviceClient.Meeting_SelectById(mainMeeting.Id);
+            this.DataContext = mainMeeting;
+            MessageBox.Show("Edited successfuly", "Success");
+        }
+
+        private void LeaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            serviceClient.ParticipentInMeeting_Delete(mainPIM);
+            MessageBox.Show("Added successfuly", "Success");
         }
     }
 }

@@ -16,6 +16,7 @@ using MeetMe_.ClientService;
 using MeetMe_.MeetMePlus.NewMeeting;
 using MeetMe_.MeetMePlus.Friends;
 using MeetMe_.MeetMePlus.Meetings;
+using MeetMe_.MeetMePlus.FriendsSug;
 
 namespace MeetMe_.MeetMePlus
 {
@@ -41,8 +42,9 @@ namespace MeetMe_.MeetMePlus
             pages.Add(new ChatPage(mainUser));
             pages.Add(new MyAccount(mainUser));
             pages.Add(new CreateMeeting(this, mainUser));
-            pages.Add(new FriendsPage(mainUser, pages[1] as ChatPage));
-            pages.Add(new MeetingsPage(mainUser));
+            pages.Add(new FriendsPage(mainUser, pages[1] as ChatPage, this));
+            pages.Add(new MainMeetingsPage(mainUser));
+            pages.Add(new FriendSuggestionsPage(mainUser, pages[4] as FriendsPage));
             mainUser = user;
             AppFrame.Navigate(pages[0]);
         }
@@ -90,6 +92,11 @@ namespace MeetMe_.MeetMePlus
         private void MeetingsLstItem_Selected(object sender, RoutedEventArgs e)
         {
             AppFrame.Navigate(pages[5]);
+        }
+
+        private void SugLstItem_Selected(object sender, RoutedEventArgs e)
+        {
+            AppFrame.Navigate(pages[6]);
         }
     }
 }

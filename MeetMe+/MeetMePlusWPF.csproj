@@ -85,6 +85,12 @@
     <Compile Include="MeetMePlus\Chat\Themes\NewChat.xaml.cs">
       <DependentUpon>NewChat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MeetMePlus\FriendsSug\FriendSuggestionsPage.xaml.cs">
+      <DependentUpon>FriendSuggestionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MeetMePlus\FriendsSug\Themes\FriendSugCard.xaml.cs">
+      <DependentUpon>FriendSugCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MeetMePlus\Friends\FriendsPage.xaml.cs">
       <DependentUpon>FriendsPage.xaml</DependentUpon>
     </Compile>
@@ -94,8 +100,20 @@
     <Compile Include="MeetMePlus\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MeetMePlus\Meetings\JoinedMeetingsPage.xaml.cs">
+      <DependentUpon>JoinedMeetingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MeetMePlus\Meetings\MainMeetingsPage.xaml.cs">
+      <DependentUpon>MainMeetingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MeetMePlus\Meetings\MeetingsPage.xaml.cs">
       <DependentUpon>MeetingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MeetMePlus\Meetings\MyMeetingsPage.xaml.cs">
+      <DependentUpon>MyMeetingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MeetMePlus\Meetings\Themes\EditMeetingWindow.xaml.cs">
+      <DependentUpon>EditMeetingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MeetMePlus\Meetings\Themes\ReadMoreWindow.xaml.cs">
       <DependentUpon>ReadMoreWindow.xaml</DependentUpon>
@@ -176,6 +194,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MeetMePlus\FriendsSug\FriendSuggestionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MeetMePlus\FriendsSug\Themes\FriendSugCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MeetMePlus\Friends\FriendsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -188,7 +214,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MeetMePlus\Meetings\JoinedMeetingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MeetMePlus\Meetings\MainMeetingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MeetMePlus\Meetings\MeetingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MeetMePlus\Meetings\MyMeetingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MeetMePlus\Meetings\Themes\EditMeetingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -267,13 +309,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\ClientService\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ClientService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ClientService\item2.xsd">
+    <None Include="Connected Services\ClientService\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ClientService\MeetMe_.ClientService.Chat.datasource">
@@ -312,7 +348,16 @@
     <None Include="Connected Services\ClientService\MeetMe_.ClientService.UsersList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ClientService\Service.wsdl" />
+    <None Include="Connected Services\ClientService\Model.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ClientService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ClientService\service1.wsdl" />
+    <None Include="Connected Services\ClientService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -356,9 +401,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ClientService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ClientService\item.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ClientService\configuration91.svcinfo" />

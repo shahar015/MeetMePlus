@@ -12,7 +12,7 @@
 
     <Grid>
         <StackPanel>
-            <TextBox x:Name="meetingDescTb" materialDesign:HintAssist.Hint="Meeting Description" Width="500" Height="400" Foreground="Black" Margin="0,150,0,0" FontSize="40" materialDesign:HintAssist.HelperText="Enter your meeting name" materialDesign:HintAssist.HelperTextFontSize="20"/>
+            <TextBox x:Name="meetingDescTb" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Meeting Description" Width="500" Height="400" Foreground="Black" Margin="0,150,0,0" FontSize="40" materialDesign:HintAssist.HelperText="Enter your meeting name" materialDesign:HintAssist.HelperTextFontSize="20"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,50,0,0">
 
                 <Button x:Name="submitBtn" Content="Submit"  materialDesign:ButtonAssist.CornerRadius="15" Margin="10" Height="50" FontSize="30" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="135" Click="NextBtn_Click">

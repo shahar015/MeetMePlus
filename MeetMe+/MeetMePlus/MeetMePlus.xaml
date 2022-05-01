@@ -84,7 +84,7 @@
                             <TextBlock Text="Chats" FontSize="40" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Name="FrndSuggLstItem">
+                    <ListViewItem Name="FrndSuggLstItem" Selected="SugLstItem_Selected">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="AccountSearch" Margin="0,0,10,0" Width="50" Height="50"/>
                             <TextBlock Text="Friends Suggestions" FontSize="40" VerticalAlignment="Center"/>

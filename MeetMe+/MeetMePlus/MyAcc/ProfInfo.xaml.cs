@@ -81,7 +81,7 @@ namespace MeetMe_.MeetMePlus.MyAcc
         private void usernameTb_LostFocus(object sender, RoutedEventArgs e)
         {
             MeetMe_.ClientService.ServiceClient serviceClient = new MeetMe_.ClientService.ServiceClient();
-            User user = serviceClient.FindUsername(usernameTb.Text);
+            User user = serviceClient.User_FindUsername(usernameTb.Text);
             if (user != null)
             {
                 usernameDot.Foreground = Brushes.Red;

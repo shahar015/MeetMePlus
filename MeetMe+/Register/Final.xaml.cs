@@ -43,7 +43,7 @@ namespace MeetMe_.Register
 
         private void finishBt_Click(object sender, RoutedEventArgs e)
         {
-            if (usernameTb.Text == "" || passwordPb.Password == "" || interestsTb.Text == "")
+            if (usernameTb.Text == "" || passwordPb.Password == "" )//||interestsTb.Text == "")
             {
                 MessageBox.Show("You must fill all fields", "Error");
             }
@@ -51,7 +51,7 @@ namespace MeetMe_.Register
             {
                 newUser.Username = usernameTb.Text;
                 newUser.Password = passwordPb.Password;
-                newUser.Interests = interestsTb.Text;
+                //newUser.Interests = interestsTb.Text;
                 serviceClient.Users_Insert(newUser);
                 ImageUtils.SendImageToService(imagePath);
                 //serviceClient.ImgPath(imagePath, @"Images\ProfPix\");
@@ -72,7 +72,7 @@ namespace MeetMe_.Register
 
         private void usernameTb_LostFocus(object sender, RoutedEventArgs e)
         {
-            User user = serviceClient.FindUsername(usernameTb.Text);
+            User user = serviceClient.User_FindUsername(usernameTb.Text);
             if (user != null)
             {
                 usernameDot.Foreground = Brushes.Red;

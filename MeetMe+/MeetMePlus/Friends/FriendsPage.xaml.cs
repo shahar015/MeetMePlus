@@ -27,32 +27,29 @@ namespace MeetMe_.MeetMePlus.Friends
         User mainUser;
         Chat.ChatPage mainChatPage;
         FriendsList friends;
+        MeetMePlus mainMeetMePlus;
         public FriendsPage()
         {
             InitializeComponent();
         }
 
-        public FriendsPage(User user, Chat.ChatPage chatPage)
+        public FriendsPage(User user, Chat.ChatPage chatPage, MeetMePlus meetMePlus)
         {
             InitializeComponent();
             mainUser = user;
             serviceClient = new ServiceClient();
-            friends = serviceClient.Friend_SelectByUser(mainUser);
+            mainMeetMePlus = meetMePlus;
             mainChatPage = chatPage;
-            foreach (Friend friend in friends)
-            {
-                    FriendsCard friendsCard = new FriendsCard(this, mainUser, friend, chatPage);
-                    friendsLst.Children.Add(friendsCard);
-            }
+            Load();
         }
 
-        public void Reload()
+        public void Load()
         {
             friendsLst.Children.Clear();
             friends = serviceClient.Friend_SelectByUser(mainUser);
             foreach (Friend friend in friends)
             {
-                FriendsCard friendsCard = new FriendsCard(this, mainUser, friend, mainChatPage);
+                FriendsCard friendsCard = new FriendsCard(this, mainUser, friend, mainChatPage, mainMeetMePlus);
                 friendsLst.Children.Add(friendsCard);
             }
         }

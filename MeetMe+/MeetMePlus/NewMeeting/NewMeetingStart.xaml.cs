@@ -1,6 +1,7 @@
 ﻿using MeetMe_.ClientService;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace MeetMe_.MeetMePlus.NewMeeting
             }
             newMeeting.Name = meetingNameTb.Text;
             newMeeting.Location = meetingAsdressTb.Text;
-            newMeeting.MeetingTime = DateTime.Parse(meetingDateTb.Text + " " + meetingTimeTb.Text);
+            newMeeting.MeetingTime = DateTime.ParseExact(meetingDateTb.Text + " " + meetingTimeTb.Text, "d/M/yyyy H:m", CultureInfo.InvariantCulture);
             newMeeting.Creator = mainUser;
             this.NavigationService.Navigate(new FinalNewMeeting(meetMePlusMain ,mainUser, newMeeting));
         }

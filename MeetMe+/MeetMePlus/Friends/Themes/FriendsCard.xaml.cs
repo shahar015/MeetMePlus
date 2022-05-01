@@ -26,17 +26,19 @@ namespace MeetMe_.MeetMePlus.Friends.Themes
         FriendsPage mainFriendsPage;
         User mainUser;
         Chat.ChatPage mainChatPage;
+        MeetMePlus mainMeetMePlus;
         public FriendsCard()
         {
             InitializeComponent();
         }
-        public FriendsCard(FriendsPage friendsPage, User user, Friend friend, Chat.ChatPage chatPage)
+        public FriendsCard(FriendsPage friendsPage, User user, Friend friend, Chat.ChatPage chatPage, MeetMePlus meetMePlus)
         {
             InitializeComponent();
             mainFriend = friend;
             mainFriendsPage = friendsPage;
             mainUser = user;
             mainChatPage = chatPage;
+            mainMeetMePlus = meetMePlus;
             if (user.Username == friend.User1.Username)
             {
                 this.DataContext = friend.User2;
@@ -58,9 +60,9 @@ namespace MeetMe_.MeetMePlus.Friends.Themes
                 ServiceClient serviceClient = new ServiceClient();
                 serviceClient.Friends_Delete(mainFriend);
                 ClientService.Chat chat = serviceClient.Chat_SelectByUsers(mainFriend.User2, mainFriend.User1);
-                serviceClient.DeleteFromChat(chat);
+                serviceClient.Message_DeleteFromChat(chat);
                 serviceClient.Chat_Delete(chat);
-                mainFriendsPage.Reload();
+                mainFriendsPage.Load();
                 mainChatPage.LoadChatHeaders(serviceClient.Chat_SelectByUser(mainUser));
             }
         }
@@ -69,6 +71,7 @@ namespace MeetMe_.MeetMePlus.Friends.Themes
         {
             ServiceClient serviceClient = new ServiceClient();
             ClientService.Chat chat = serviceClient.Chat_SelectByUsers(mainFriend.User2, mainFriend.User1);
+            mainMeetMePlus.MenuLstView.SelectedIndex = 5;
             if (chat==null)
             {
                 chat = new ClientService.Chat();
