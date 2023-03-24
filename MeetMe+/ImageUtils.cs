@@ -15,8 +15,8 @@ namespace MeetMe_
         private static string imageDirectory;
         public static string ImageDirectory
         {
-            get => imageDirectory;
-            set => imageDirectory = value;
+            get { return imageDirectory; }
+            set { imageDirectory = value; }
         }
 
         public static string UploadImage_Dialog(string username)
