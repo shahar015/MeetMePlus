@@ -1,3 +1,4 @@
+# MeetMePlus
 1. Add msbuild to your PATH:
   run "reg.exe query "HKLM\SOFTWARE\Microsoft\MSBuild\ToolsVersions\4.0" /v MSBuildToolsPath" on cmd
   add file path to PATH
@@ -14,4 +15,4 @@
      
 4. build both projects with msbuild command
 
-# MeetMePlus
+
