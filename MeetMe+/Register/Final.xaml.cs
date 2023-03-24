@@ -39,6 +39,8 @@ namespace MeetMe_.Register
 
             newUser = user;
             serviceClient = new ServiceClient();
+            profPicWpf.ImageSource = (BitmapImage)ImageUtils.LoadPic(System.IO.Path.Combine(
+                ImageUtils.ImageDirectory, "default.jpg"));
         }
 
         private void finishBt_Click(object sender, RoutedEventArgs e)
@@ -50,11 +52,24 @@ namespace MeetMe_.Register
             else
             {
                 newUser.Username = usernameTb.Text;
+                UserTypesList userTypes = serviceClient.UserTypes_SelectAll();
+                newUser.UserType = userTypes[1];
                 newUser.Password = passwordPb.Password;
-                //newUser.Interests = interestsTb.Text;
+                if (imagePath != null)
+                {
+                    newUser.ProfPicExt = System.IO.Path.GetExtension(imagePath);
+                    imagePath = ImageUtils.SaveImageToClient(imagePath, newUser.Username);
+                    ImageUtils.SendImageToService(imagePath);
+                }
+                else
+                {
+                    newUser.ProfPicExt = ".jpg";
+                }
                 serviceClient.Users_Insert(newUser);
-                ImageUtils.SendImageToService(imagePath);
-                //serviceClient.ImgPath(imagePath, @"Images\ProfPix\");
+                if (imagePath != null)
+                {
+                    ImageUtils.SendImageToService(imagePath);
+                }
                 Login login = new Login(newUser);
                 login.Show();
                 var wnd = Window.GetWindow(this) as Window;
@@ -93,18 +108,17 @@ namespace MeetMe_.Register
         }
 
         private void ProfPicBt_Click(object sender, RoutedEventArgs e)
-        {
-            if (usernameTb.Text == "")
+        {       
+            imagePath = ImageUtils.UploadImageFirstTime_Dialog();
+            if (imagePath != null)
             {
-                MessageBox.Show("Must choose username first", "Error");
-                return;
+                profPicWpf.ImageSource = (BitmapImage)ImageUtils.LoadPic(imagePath);
+                //newUser.ProfPicExt = System.IO.Path.GetExtension(imagePath);
             }
-
-
-            newUser.Username = usernameTb.Text;
-            imagePath = ImageUtils.UploadImage_Dialog(newUser.Username);
-            profPicWpf.ImageSource = (BitmapImage)ImageUtils.LoadPic(imagePath);
-            newUser.ProfPicExt = System.IO.Path.GetExtension(imagePath);
+            //else
+            //{
+            //        newUser.ProfPicExt = ".jpg";
+            //}
         }
     }
 

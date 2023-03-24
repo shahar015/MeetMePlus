@@ -1,61 +1,160 @@
-﻿<Page x:Class="MeetMe_.MeetMePlus.MyAcc.UserInfo"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:MeetMe_.MeetMePlus.MyAcc" xmlns:local1="clr-namespace:MeetMe_"
-      mc:Ignorable="d" 
-      d:DesignHeight="480" d:DesignWidth="900"
-      Title="UserInfor">
+﻿<Page
+    x:Class="MeetMe_.MeetMePlus.MyAcc.UserInfo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MeetMe_.MeetMePlus.MyAcc"
+    xmlns:local1="clr-namespace:MeetMe_"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="UserInfor"
+    d:DesignHeight="480"
+    d:DesignWidth="900"
+    mc:Ignorable="d">
     <Page.Resources>
-        <!--The tool tip for the TextBox to display the validation error message.-->
+        <!--  The tool tip for the TextBox to display the validation error message.  -->
         <Style x:Key="textBoxInError" TargetType="TextBox">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="true">
-                    <Setter Property="ToolTip"
-                     Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                     Path=(Validation.Errors)[0].ErrorContent}"/>
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="radio" TargetType="RadioButton">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="100" />
                 </Trigger>
             </Style.Triggers>
         </Style>
     </Page.Resources>
-  
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock  Text="First Name:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Margin="20,0,0,0" Foreground="LightGray"/>
-        <TextBox x:Name="firstNameTb" IsEnabled="False" Grid.Column="1" Grid.Row="0" FontSize="50" Margin="20,0,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <Binding Path="FirstName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="50"
+            Foreground="LightGray"
+            Text="First Name:" />
+        <TextBox
+            x:Name="firstNameTb"
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="50"
+            Foreground="White"
+            IsEnabled="False">
+            <Binding
+                Path="FirstName"
+                UpdateSourceTrigger="PropertyChanged"
+                ValidatesOnDataErrors="True">
                 <Binding.ValidationRules>
-                    <local1:ValidFirstName/>
+                    <local1:ValidFirstName />
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
 
-        <TextBlock Text="Last Name:" Grid.Column="0" Grid.Row="1" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="LightGray"/>
-        <TextBox x:Name="lastNameTb" IsEnabled="False" Grid.Column="1" Grid.Row="1" FontSize="50" Margin="20,0,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <Binding Path="LastName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="50"
+            Foreground="LightGray"
+            Text="Last Name:" />
+        <TextBox
+            x:Name="lastNameTb"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="50"
+            Foreground="White"
+            IsEnabled="False">
+            <Binding
+                Path="LastName"
+                UpdateSourceTrigger="PropertyChanged"
+                ValidatesOnDataErrors="True">
                 <Binding.ValidationRules>
-                    <local1:ValidFirstName/>
+                    <local1:ValidFirstName />
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
 
-        <TextBlock  Text="Birthday:" Grid.Column="0" Grid.Row="2" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="LightGray" />
-        <TextBox x:Name="bDayTb" IsEnabled="False" Grid.Column="1" Grid.Row="2" FontSize="50" Margin="20,0,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="50"
+            Foreground="LightGray"
+            Text="Birthday:" />
+        <TextBox
+            x:Name="bDayTb"
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="50"
+            Foreground="White"
+            IsEnabled="False" />
 
-        <TextBlock Text="Gender:" Grid.Column="0" Grid.Row="3" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="LightGray"/>
-        <StackPanel Grid.Column="1" Grid.Row="3" VerticalAlignment="center">
-            <RadioButton x:Name="MaleRb" IsEnabled="False" IsChecked="True" GroupName="gender" FontSize="30" Margin="20,0,0,10" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left">Male</RadioButton>
-            <RadioButton x:Name="FemaleRb" IsEnabled="False" GroupName="gender" FontSize="30" Margin="20,10,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left">Female</RadioButton>
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="50"
+            Foreground="LightGray"
+            Text="Gender:" />
+        <StackPanel
+            Grid.Row="3"
+            Grid.Column="1"
+            VerticalAlignment="center">
+            <RadioButton
+                x:Name="MaleRb"
+                Margin="20,0,0,10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="30"
+                Foreground="White"
+                GroupName="gender"
+                IsChecked="True"
+                IsEnabled="False"
+                Opacity="0.7">
+                Male
+            </RadioButton>
+            <RadioButton
+                x:Name="FemaleRb"
+                Margin="20,10,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="30"
+                Foreground="White"
+                GroupName="gender"
+                IsEnabled="False"
+                Opacity="0.7">
+                Female
+            </RadioButton>
         </StackPanel>
     </Grid>
 </Page>

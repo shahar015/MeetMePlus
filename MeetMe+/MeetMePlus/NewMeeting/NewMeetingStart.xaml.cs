@@ -34,8 +34,9 @@ namespace MeetMe_.MeetMePlus.NewMeeting
         {
             InitializeComponent();
             mainUser = user;
-            pages = meetMePlus.GetPages();
+            pages = meetMePlus.GetUserPages();
             meetMePlusMain = meetMePlus;
+            meetingDateTb.DisplayDateStart=DateTime.Now;
         }
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
@@ -47,7 +48,7 @@ namespace MeetMe_.MeetMePlus.NewMeeting
             }
             newMeeting.Name = meetingNameTb.Text;
             newMeeting.Location = meetingAsdressTb.Text;
-            newMeeting.MeetingTime = DateTime.ParseExact(meetingDateTb.Text + " " + meetingTimeTb.Text, "d/M/yyyy H:m", CultureInfo.InvariantCulture);
+            newMeeting.MeetingTime = DateTime.ParseExact(meetingDateTb.Text + " " + meetingTimeTb.Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
             newMeeting.Creator = mainUser;
             this.NavigationService.Navigate(new FinalNewMeeting(meetMePlusMain ,mainUser, newMeeting));
         }

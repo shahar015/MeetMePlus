@@ -83,6 +83,35 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Friends_DeleteByUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q8:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Friends_DeleteByUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Friends_DeleteByUserResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Friend_SelectByUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user1" nillable="true" type="q9:User" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user2" nillable="true" type="q10:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Friend_SelectByUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Friend_SelectByUsersResult" nillable="true" type="q11:Friend" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Users_SelectAll">
     <xs:complexType>
       <xs:sequence />
@@ -91,7 +120,7 @@
   <xs:element name="Users_SelectAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Users_SelectAllResult" nillable="true" type="q8:UsersList" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Users_SelectAllResult" nillable="true" type="q12:UsersList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -105,7 +134,7 @@
   <xs:element name="User_SelectByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="User_SelectByIdResult" nillable="true" type="q9:User" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="User_SelectByIdResult" nillable="true" type="q13:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -119,14 +148,14 @@
   <xs:element name="User_SearchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="User_SearchResult" nillable="true" type="q10:UsersList" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="User_SearchResult" nillable="true" type="q14:UsersList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Users_Insert">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q11:User" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q15:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -140,7 +169,7 @@
   <xs:element name="Users_Update">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q12:User" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q16:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -154,7 +183,7 @@
   <xs:element name="Users_Delete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q13:User" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q17:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -176,7 +205,7 @@
   <xs:element name="User_SelectLoginResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="User_SelectLoginResult" nillable="true" type="q14:User" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="User_SelectLoginResult" nillable="true" type="q18:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -190,21 +219,21 @@
   <xs:element name="User_FindUsernameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="User_FindUsernameResult" nillable="true" type="q15:User" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="User_FindUsernameResult" nillable="true" type="q19:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="User_SelectAllBesidesUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q16:User" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q20:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="User_SelectAllBesidesUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="User_SelectAllBesidesUserResult" nillable="true" type="q17:UsersList" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="User_SelectAllBesidesUserResult" nillable="true" type="q21:UsersList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -216,7 +245,7 @@
   <xs:element name="Meetings_SelectAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Meetings_SelectAllResult" nillable="true" type="q18:MeetingsList" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Meetings_SelectAllResult" nillable="true" type="q22:MeetingsList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -230,28 +259,28 @@
   <xs:element name="Meeting_SelectByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Meeting_SelectByIdResult" nillable="true" type="q19:Meeting" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Meeting_SelectByIdResult" nillable="true" type="q23:Meeting" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Meetings_SelectByUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q20:User" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q24:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Meetings_SelectByUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Meetings_SelectByUserResult" nillable="true" type="q21:MeetingsList" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Meetings_SelectByUserResult" nillable="true" type="q25:MeetingsList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Meetings_Insert">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="meeting" nillable="true" type="q22:Meeting" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="meeting" nillable="true" type="q26:Meeting" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -265,7 +294,7 @@
   <xs:element name="Meetings_Update">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="meeting" nillable="true" type="q23:Meeting" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="meeting" nillable="true" type="q27:Meeting" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -279,7 +308,7 @@
   <xs:element name="Meetings_Delete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="meeting" nillable="true" type="q24:Meeting" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="meeting" nillable="true" type="q28:Meeting" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -293,14 +322,28 @@
   <xs:element name="Meetings_SelectAllBesidesUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q25:User" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q29:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Meetings_SelectAllBesidesUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Meetings_SelectAllBesidesUserResult" nillable="true" type="q26:MeetingsList" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Meetings_SelectAllBesidesUserResult" nillable="true" type="q30:MeetingsList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Meetings_DeleteByUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q31:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Meetings_DeleteByUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Meetings_DeleteByUserResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -312,7 +355,7 @@
   <xs:element name="Messages_SelectAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Messages_SelectAllResult" nillable="true" type="q27:MessagesList" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Messages_SelectAllResult" nillable="true" type="q32:MessagesList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -326,28 +369,28 @@
   <xs:element name="Message_SelectByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Message_SelectByIdResult" nillable="true" type="q28:Message" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Message_SelectByIdResult" nillable="true" type="q33:Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Message_SelectByChat">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="chat" nillable="true" type="q29:Chat" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="chat" nillable="true" type="q34:Chat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Message_SelectByChatResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Message_SelectByChatResult" nillable="true" type="q30:MessagesList" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Message_SelectByChatResult" nillable="true" type="q35:MessagesList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Message_SearchTextInChat">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="chat" nillable="true" type="q31:Chat" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="chat" nillable="true" type="q36:Chat" />
         <xs:element minOccurs="0" name="text" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -355,14 +398,14 @@
   <xs:element name="Message_SearchTextInChatResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Message_SearchTextInChatResult" nillable="true" type="q32:MessagesList" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Message_SearchTextInChatResult" nillable="true" type="q37:MessagesList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Message_Insert">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="message" nillable="true" type="q33:Message" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="message" nillable="true" type="q38:Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -376,7 +419,7 @@
   <xs:element name="Message_Update">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="message" nillable="true" type="q34:Message" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="message" nillable="true" type="q39:Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -390,7 +433,7 @@
   <xs:element name="Message_Delete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="message" nillable="true" type="q35:Message" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="message" nillable="true" type="q40:Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -404,7 +447,7 @@
   <xs:element name="Message_DeleteFromChat">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="chat" nillable="true" type="q36:Chat" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="chat" nillable="true" type="q41:Chat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -412,6 +455,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="Message_DeleteFromChatResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Messages_DeleteByUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q42:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Messages_DeleteByUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Messages_DeleteByUserResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -423,7 +480,7 @@
   <xs:element name="ParticipentsInMeeting_SelectAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="ParticipentsInMeeting_SelectAllResult" nillable="true" type="q37:ParticipentsInMeetingList" />
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="ParticipentsInMeeting_SelectAllResult" nillable="true" type="q43:ParticipentsInMeetingList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -437,28 +494,42 @@
   <xs:element name="ParticipentInMeeting_SelectByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="ParticipentInMeeting_SelectByIdResult" nillable="true" type="q38:ParticipentInMeeting" />
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="ParticipentInMeeting_SelectByIdResult" nillable="true" type="q44:ParticipentInMeeting" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ParticipentsInMeeting_SelectByUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q39:User" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q45:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ParticipentsInMeeting_SelectByUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="ParticipentsInMeeting_SelectByUserResult" nillable="true" type="q40:ParticipentsInMeetingList" />
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="ParticipentsInMeeting_SelectByUserResult" nillable="true" type="q46:ParticipentsInMeetingList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParticipentsInMeeting_SelectByMeeting">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="meeting" nillable="true" type="q47:Meeting" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParticipentsInMeeting_SelectByMeetingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="ParticipentsInMeeting_SelectByMeetingResult" nillable="true" type="q48:ParticipentsInMeetingList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ParticipentInMeeting_Insert">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="participentInMeeting" nillable="true" type="q41:ParticipentInMeeting" />
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="participentInMeeting" nillable="true" type="q49:ParticipentInMeeting" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -472,7 +543,7 @@
   <xs:element name="ParticipentInMeeting_Update">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="participentInMeeting" nillable="true" type="q42:ParticipentInMeeting" />
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="participentInMeeting" nillable="true" type="q50:ParticipentInMeeting" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -486,7 +557,7 @@
   <xs:element name="ParticipentInMeeting_Delete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="participentInMeeting" nillable="true" type="q43:ParticipentInMeeting" />
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="participentInMeeting" nillable="true" type="q51:ParticipentInMeeting" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -494,6 +565,34 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ParticipentInMeeting_DeleteResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParticipentsInMeeting_DeleteByUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q52:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParticipentsInMeeting_DeleteByUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ParticipentsInMeeting_DeleteByUserResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParticipentsInMeeting_DeleteByMeeting">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="meeting" nillable="true" type="q53:Meeting" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ParticipentsInMeeting_DeleteByMeetingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ParticipentsInMeeting_DeleteByMeetingResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -505,7 +604,7 @@
   <xs:element name="Chat_SelectAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Chat_SelectAllResult" nillable="true" type="q44:ChatsList" />
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Chat_SelectAllResult" nillable="true" type="q54:ChatsList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -519,36 +618,36 @@
   <xs:element name="Chat_SelectIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Chat_SelectIdResult" nillable="true" type="q45:Chat" />
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Chat_SelectIdResult" nillable="true" type="q55:Chat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Chat_SelectByUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q46:User" />
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q56:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Chat_SelectByUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Chat_SelectByUserResult" nillable="true" type="q47:ChatsList" />
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Chat_SelectByUserResult" nillable="true" type="q57:ChatsList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Chat_SelectByUsers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user1" nillable="true" type="q48:User" />
-        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user2" nillable="true" type="q49:User" />
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user1" nillable="true" type="q58:User" />
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user2" nillable="true" type="q59:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Chat_SelectByUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Chat_SelectByUsersResult" nillable="true" type="q50:Chat" />
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Chat_SelectByUsersResult" nillable="true" type="q60:Chat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -562,14 +661,14 @@
   <xs:element name="Chat_SearchTextResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Chat_SearchTextResult" nillable="true" type="q51:ChatsList" />
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="Chat_SearchTextResult" nillable="true" type="q61:ChatsList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Chat_Insert">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="chat" nillable="true" type="q52:Chat" />
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="chat" nillable="true" type="q62:Chat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -583,7 +682,7 @@
   <xs:element name="Chat_Update">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="chat" nillable="true" type="q53:Chat" />
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="chat" nillable="true" type="q63:Chat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -597,7 +696,7 @@
   <xs:element name="Chat_Delete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="chat" nillable="true" type="q54:Chat" />
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="chat" nillable="true" type="q64:Chat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -608,17 +707,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetIamge">
+  <xs:element name="GetProfPic">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="user" nillable="true" type="q65:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetIamgeResponse">
+  <xs:element name="GetProfPicResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetIamgeResult" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="GetProfPicResult" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -645,6 +744,74 @@
   <xs:element name="DeleteImageResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserTypes_SelectAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserTypes_SelectAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="UserTypes_SelectAllResult" nillable="true" type="q66:UserTypesList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserType_SelectById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserType_SelectByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="UserType_SelectByIdResult" nillable="true" type="q67:UserType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserTypes_Insert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="userType" nillable="true" type="q68:UserType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserTypes_InsertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserTypes_InsertResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserTypes_Update">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="userType" nillable="true" type="q69:UserType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserTypes_UpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserTypes_UpdateResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserTypes_Delete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="userType" nillable="true" type="q70:UserType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserTypes_DeleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserTypes_DeleteResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>

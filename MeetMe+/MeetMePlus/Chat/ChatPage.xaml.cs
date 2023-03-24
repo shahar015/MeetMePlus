@@ -48,16 +48,52 @@ namespace MeetMe_.MeetMePlus.Chat
 
         public void LoadChatHeaders(ChatsList chats)
         {
+            bool isUsed;
             lvChats.Items.Clear();
+            MessagesList messagesList = service.Messages_SelectAll();
             for (int i = 0; i < chats.Count; i++)
             {
-                User othenUser = chats[i].User1;
+                isUsed = false;
+                foreach (ClientService.Message m in messagesList)
+                {
+                    if (m.Chat.Id == chats[i].Id)
+                    {
+                        isUsed = true;
+                    }
+                }
+                if (!isUsed)
+                    service.Chat_Delete(chats[i]);
+            }
+
+            activeChats= service.Chat_SelectByUser(myUser);
+            foreach (ClientService.Chat item in activeChats)
+            {
+                User othenUser = item.User1;
                 if (myUser.Id == othenUser.Id)
-                    othenUser = chats[i].User2;
-               ChatHeader ucc = new ChatHeader(othenUser, chats[i]);
+                    othenUser = item.User2;
+                ChatHeader ucc = new ChatHeader(othenUser, item);
                 ucc.btnAll.Click += new RoutedEventHandler(this.ChatHeader_Click);
                 lvChats.Items.Add(ucc);
             }
+            
+        }
+
+        public void AddChatHeader(ClientService.Chat chat)
+        {
+            MessagesList messagesList = service.Messages_SelectAll();
+                User othenUser = chat.User1;
+                if (myUser.Id == othenUser.Id)
+                    othenUser = chat.User2;
+                ChatHeader ucc = new ChatHeader(othenUser, chat);
+                ucc.btnAll.Click += new RoutedEventHandler(this.ChatHeader_Click);
+                lvChats.Items.Add(ucc);
+            if (ucc != null)
+                otherUser = ucc.GetUser();
+            currentChat = chat;
+            ChatTitle.Children.Clear();
+            ChatTitle.Children.Add(new ChatHeader(otherUser));
+            messageSendArea.Visibility = Visibility.Visible;
+            LoadChatText();
         }
         private void ChatHeader_Click(object sender, RoutedEventArgs e)
         {
@@ -97,7 +133,7 @@ namespace MeetMe_.MeetMePlus.Chat
             ViewMessages.Children.Clear();
             foreach (ClientService.Message message in messages)
             {
-                MeetMe_.MeetMePlus.Chat.Themes.Message ucms = new MeetMe_.MeetMePlus.Chat.Themes.Message(message, message.Sender.Id == myUser.Id);
+                Themes.Message ucms = new Themes.Message(message, message.Sender.Id == myUser.Id);
                 ucms.Width = Double.NaN;
                 ViewMessages.Children.Add(ucms);
             }
@@ -134,13 +170,31 @@ namespace MeetMe_.MeetMePlus.Chat
 
             lvChats.Items.Clear();
             UsersList allUserList = service.User_Search(tbSearch.Text);
+            if (tbSearch.Text=="")
+            {
+                activeChats = service.Chat_SelectByUser(myUser);
+                LoadChatHeaders(activeChats);
+                return;
+            }
             foreach (User item in allUserList)
             {
                 ClientService.Chat chat = service.Chat_SelectByUsers(item, myUser);
-                ChatHeader ucc = new ChatHeader(item, chat);
-                lvChats.Items.Add(ucc);
+                if (chat != null)
+                {
+                    ChatHeader ucc = new ChatHeader(item, chat);
+                    ucc.btnAll.Click += new RoutedEventHandler(this.ChatHeader_Click);
+                    lvChats.Items.Add(ucc);
+                }
             }
 
+        }
+
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                btnAddMessage_Click(sender, e);
+            }
         }
 
         private void btnNewChat_Click(object sender, RoutedEventArgs e)

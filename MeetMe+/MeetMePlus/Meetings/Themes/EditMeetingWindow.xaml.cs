@@ -1,4 +1,5 @@
 ﻿using MeetMe_.ClientService;
+using MeetMe_.MeetMePlus.Admin.Meetings;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -22,17 +23,32 @@ namespace MeetMe_.MeetMePlus.Meetings.Themes
     public partial class EditMeetingWindow : Window
     {
         Meeting mainMeeting;
+        MyMeetingsPage mainMeetingsPage;
+        AdminMeetingsPage mainAdminMeetingsPage;
+
         public EditMeetingWindow()
         {
             InitializeComponent();
         }
-        public EditMeetingWindow(Meeting meeting)
+
+        public EditMeetingWindow(Meeting meeting, MyMeetingsPage meetingsPage)
         {
             InitializeComponent();
-            this.DataContext = meeting;
             meetingDateTb.Text = meeting.MeetingTime.ToLongDateString();
-            meetingDateTb.Text = meeting.MeetingTime.ToShortTimeString();
+            meetingTimeTb.Text = meeting.MeetingTime.ToShortTimeString();
             mainMeeting = meeting;
+            mainMeetingsPage = meetingsPage;
+            this.DataContext = mainMeeting;
+        }
+
+        public EditMeetingWindow(Meeting meeting, AdminMeetingsPage meetingsPage)
+        {
+            InitializeComponent();
+            meetingDateTb.Text = meeting.MeetingTime.ToLongDateString();
+            meetingTimeTb.Text = meeting.MeetingTime.ToShortTimeString();
+            mainMeeting = meeting;
+            mainAdminMeetingsPage = meetingsPage;
+            this.DataContext = mainMeeting;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -49,8 +65,33 @@ namespace MeetMe_.MeetMePlus.Meetings.Themes
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             ServiceClient serviceClient = new ServiceClient();
-            mainMeeting.MeetingTime = DateTime.ParseExact(meetingDateTb.Text + " " + meetingTimeTb.Text, "d/M/yyyy H:m", CultureInfo.InvariantCulture);
+            mainMeeting.MeetingTime = DateTime.ParseExact(
+                meetingDateTb.Text + " " + meetingTimeTb.Text,
+                "dd/MM/yyyy HH:mm",
+                CultureInfo.InvariantCulture
+            );
             serviceClient.Meetings_Update(mainMeeting);
+            this.Close();
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show(
+                "Are you sure you want to remove friend?",
+                "Delete Confirmation",
+                System.Windows.MessageBoxButton.YesNo
+            );
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                ServiceClient serviceClient = new ServiceClient();
+                serviceClient.ParticipentsInMeeting_DeleteByMeeting(mainMeeting);
+                serviceClient.Meetings_Delete(mainMeeting);
+                if (mainMeetingsPage != null)
+                    mainMeetingsPage.Load();
+                else
+                    mainAdminMeetingsPage.Load();
+                this.Close();
+            }
         }
     }
 }

@@ -38,7 +38,7 @@ namespace MeetMe_.MeetMePlus
             InitializeComponent();
             mainUser = user;
             meetMePlusMain = meetMePlus;
-            pages = meetMePlusMain.GetPages();
+            pages = meetMePlusMain.GetUserPages();
             ns = NavigationService.GetNavigationService(this);
 
         }
@@ -76,6 +76,13 @@ namespace MeetMe_.MeetMePlus
             meetMePlusMain.MenuLstView.SelectedIndex = 4;
             ns = NavigationService.GetNavigationService(this);
             ns.Navigate(pages[5]);
+        }
+
+        private void usersBtn_Click(object sender, RoutedEventArgs e)
+        {
+            meetMePlusMain.MenuLstView.SelectedIndex = 6;
+            ns = NavigationService.GetNavigationService(this);
+            ns.Navigate(pages[6]);
         }
     }
 }

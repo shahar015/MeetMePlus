@@ -13,56 +13,83 @@ namespace MeetMe_
     public class ImageUtils
     {
         private static string imageDirectory;
-        public static string ImageDirectory { get => imageDirectory; set => imageDirectory = value; }
+        public static string ImageDirectory
+        {
+            get => imageDirectory;
+            set => imageDirectory = value;
+        }
 
         public static string UploadImage_Dialog(string username)
         {
-
             string filename = null;
-            // Create OpenFileDialog 
+            // Create OpenFileDialog
             OpenFileDialog dlg = new OpenFileDialog();
 
-            // Set filter for file extension and default file extension 
-            dlg.Filter = "All Images | *.jpg;*.jpeg;*.tif;*.tiff;*.bmp;*.png|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            // Set filter for file extension and default file extension
+            dlg.Filter =
+                "All Images | *.jpg;*.jpeg;*.tif;*.tiff;*.bmp;*.png|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
 
-            // Display OpenFileDialog by calling ShowDialog method 
+            // Display OpenFileDialog by calling ShowDialog method
             Nullable<bool> result = dlg.ShowDialog();
 
-            // Get the selected file name and display in a TextBox 
+            // Get the selected file name and display in a TextBox
             if (result == true)
             {
-                // Open document 
+                // Open document
                 filename = dlg.FileName;
                 filename = SaveImageToClient(filename, username); // save the Picture in LocalFolder
-                                                        // (if not exist) rns return only the file name
+                // (if not exist) rns return only the file name
+            }
+            return filename;
+        }
+
+        public static string UploadImageFirstTime_Dialog()
+        {
+            string filename = null;
+            // Create OpenFileDialog
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            // Set filter for file extension and default file extension
+            dlg.Filter =
+                "All Images | *.jpg;*.jpeg;*.tif;*.tiff;*.bmp;*.png|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+
+            // Display OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox
+            if (result == true)
+            {
+                // Open document
+                filename = dlg.FileName; // save the Picture in LocalFolder
+                // (if not exist) rns return only the file name
             }
             return filename;
         }
 
         public static string UpdateImage_Dialog(User user)
         {
-
             string filename = null;
-            // Create OpenFileDialog 
+            // Create OpenFileDialog
             OpenFileDialog dlg = new OpenFileDialog();
 
-            // Set filter for file extension and default file extension 
-            dlg.Filter = "All Images | *.jpg;*.jpeg;*.tif;*.tiff;*.bmp;*.png|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            // Set filter for file extension and default file extension
+            dlg.Filter =
+                "All Images | *.jpg;*.jpeg;*.tif;*.tiff;*.bmp;*.png|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
 
-            // Display OpenFileDialog by calling ShowDialog method 
+            // Display OpenFileDialog by calling ShowDialog method
             Nullable<bool> result = dlg.ShowDialog();
 
-            // Get the selected file name and display in a TextBox 
+            // Get the selected file name and display in a TextBox
             if (result == true)
             {
-                // Open document 
+                // Open document
                 filename = dlg.FileName;
                 System.GC.Collect();
                 System.GC.WaitForPendingFinalizers();
                 DeleteImageFromClient(user);
                 DeleteImageFromService(user);
                 filename = SaveImageToClient(filename, user.Username);
-                SendImageToService(filename);            
+                SendImageToService(filename);
             }
             return filename;
         }
@@ -83,6 +110,21 @@ namespace MeetMe_
             return fileName;
         }
 
+        public static string SaveImageFromServer(User user, byte[] bytes)
+        {
+            string fileName = user.Username + user.ProfPicExt;
+            string localFilePath = System.IO.Path.Combine(imageDirectory, fileName);
+
+            if (!File.Exists(localFilePath))
+            {
+                var stream = new MemoryStream(bytes);
+                System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
+
+                img.Save(localFilePath);
+            }
+            return fileName;
+        }
+
         public static void DeleteImageFromClient(User user)
         {
             string fileName = user.Username + user.ProfPicExt;
@@ -90,11 +132,7 @@ namespace MeetMe_
             System.GC.Collect();
             System.GC.WaitForPendingFinalizers();
             if (File.Exists(localFilePath))
-            {
                 File.Delete(localFilePath);
-            }
-
-
         }
 
         public static void SendImageToService(string image)
@@ -115,10 +153,20 @@ namespace MeetMe_
 
         public static BitmapImage LoadProfPic(User user)
         {
-            string path = System.IO.Path.Combine(ImageUtils.ImageDirectory, user.Username + user.ProfPicExt);
+            string path = System.IO.Path.Combine(
+                ImageUtils.ImageDirectory,
+                user.Username + user.ProfPicExt
+            );
             if (!File.Exists(path))
             {
-                path = System.IO.Path.Combine(ImageUtils.ImageDirectory, "default.jpg");
+                ServiceClient service = new ServiceClient();
+                byte[] bytes = service.GetProfPic(user);
+                if (bytes == null)
+                    path = System.IO.Path.Combine(ImageUtils.ImageDirectory, "default.jpg");
+                else
+                {
+                    SaveImageFromServer(user, bytes);
+                }
             }
             using (var stream = new FileStream(path, FileMode.Open))
             {
@@ -145,6 +193,5 @@ namespace MeetMe_
                 return bitmapImage;
             }
         }
-
     }
 }

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MeetMe_.MeetMePlus.Friends.Themes;
+using MeetMe_.MeetMePlus.FriendsSug;
 
 namespace MeetMe_.MeetMePlus.Friends
 {
@@ -25,21 +26,20 @@ namespace MeetMe_.MeetMePlus.Friends
     {
         ServiceClient serviceClient;
         User mainUser;
-        Chat.ChatPage mainChatPage;
         FriendsList friends;
         MeetMePlus mainMeetMePlus;
+        FriendSuggestionsPage friendSuggestionsPage;
         public FriendsPage()
         {
             InitializeComponent();
         }
 
-        public FriendsPage(User user, Chat.ChatPage chatPage, MeetMePlus meetMePlus)
+        public FriendsPage(User user, MeetMePlus meetMePlus)
         {
             InitializeComponent();
             mainUser = user;
             serviceClient = new ServiceClient();
             mainMeetMePlus = meetMePlus;
-            mainChatPage = chatPage;
             Load();
         }
 
@@ -49,14 +49,21 @@ namespace MeetMe_.MeetMePlus.Friends
             friends = serviceClient.Friend_SelectByUser(mainUser);
             foreach (Friend friend in friends)
             {
-                FriendsCard friendsCard = new FriendsCard(this, mainUser, friend, mainChatPage, mainMeetMePlus);
+                FriendsCard friendsCard = new FriendsCard(mainUser, friend, mainMeetMePlus);
                 friendsLst.Children.Add(friendsCard);
             }
+            if (friendsLst.Children.Count == 0)
+                makeFriendsSp.Visibility = Visibility.Visible;
+            else
+                makeFriendsSp.Visibility = Visibility.Hidden;
         }
 
-        public Chat.ChatPage GetChatPage()
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            return mainChatPage;
+            friendSuggestionsPage = mainMeetMePlus.GetUserPages()[6] as FriendSuggestionsPage;
+            NavigationService ns = NavigationService.GetNavigationService(this);
+            ns.Navigate(mainMeetMePlus.GetUserPages()[6]);
+            mainMeetMePlus.MenuLstView.SelectedIndex = 6;
         }
     }
 }

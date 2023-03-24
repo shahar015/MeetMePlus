@@ -24,6 +24,7 @@ namespace MeetMe_.MeetMePlus.MyAcc
         User mainUser;
         MyAccount accountPage;
         User defaultUser;
+        string[] mainHobbiesList;
         public ProfInfo()
         {
             InitializeComponent();
@@ -35,29 +36,72 @@ namespace MeetMe_.MeetMePlus.MyAcc
             usernameDot.Visibility = Visibility.Hidden;
             accountPage =myAccPage;
             mainUser = user;
-            defaultUser = new User{Id=mainUser.Id, FirstName=mainUser.FirstName, LastName=mainUser.LastName, Birthday=mainUser.Birthday, Gender=mainUser.Gender, Email=mainUser.Email, Phone=mainUser.Phone, Username=mainUser.Username, Password=mainUser.Password, Interests=mainUser.Interests};
-            //defaultUser = (User)mainUser.Clone() ;
+            defaultUser = new User{Id=mainUser.Id, FirstName=mainUser.FirstName, LastName=mainUser.LastName, Birthday=mainUser.Birthday, Gender=mainUser.Gender, Email=mainUser.Email, Phone=mainUser.Phone, Username=mainUser.Username, Password=mainUser.Password, Interests=mainUser.Interests, UserType = mainUser.UserType, ProfPicExt = mainUser.ProfPicExt };
+            string[] hobbiesList = new string[]
+            {
+                "Reading",
+                "Traveling",
+                "Fishing",
+                "Crafting",
+                "Watching TV",
+                "Bird Watching",
+                "Listening to music",
+                "Gardening",
+                "Video Games",
+                "Yoga",
+                "Hiking",
+                "Cooking"
+            };
+            mainHobbiesList = hobbiesList; 
+            hobbiesLst.ItemsSource = hobbiesList;
             this.DataContext = mainUser;
-            
+            LoadInterests();
+
+
+        }
+        
+        public void LoadInterests()
+        {
+            for (int i = 0; i < mainHobbiesList.Length; i++)
+            {
+                if (Array.Exists(mainUser.Interests, item => item == mainHobbiesList[i]))
+                {
+                    hobbiesLst.SelectedItems.Add(mainHobbiesList[i]);
+                }
+            }
+        }
+
+        public void AddInterests()
+        {
+            string[] selectedHobbies = hobbiesLst.SelectedItems.Cast<string>().ToArray();
+            if (selectedHobbies.Length < 2)
+            {
+                MessageBox.Show("You must select at least 2 hobbies", "Error");
+            }
+            else
+            {
+                mainUser.Interests = selectedHobbies;
+            }
         }
         public void EditMode()
         {
            usernameTb.IsEnabled = true;
             passwordTb.IsEnabled = true;
             emailTb.IsEnabled = true;
-            interestsTb.IsEnabled = true;
+            hobbiesLst.IsEnabled = true;
         }
         public void Cancel()
         {
-            mainUser = new User { Id = defaultUser.Id, FirstName = defaultUser.FirstName, LastName = defaultUser.LastName, Birthday = defaultUser.Birthday, Gender = defaultUser.Gender, Email = defaultUser.Email, Phone = defaultUser.Phone, Username = defaultUser.Username, Password = defaultUser.Password, Interests = defaultUser.Interests };
+            mainUser = new User { Id = defaultUser.Id, FirstName = defaultUser.FirstName, LastName = defaultUser.LastName, Birthday = defaultUser.Birthday, Gender = defaultUser.Gender, Email = defaultUser.Email, Phone = defaultUser.Phone, Username = defaultUser.Username, Password = defaultUser.Password, Interests = defaultUser.Interests, UserType = defaultUser.UserType, ProfPicExt = defaultUser.ProfPicExt };
             this.DataContext = null;
             this.DataContext = mainUser;
+            LoadInterests();
             usernameTb.Foreground = Brushes.White;
             usernameDot.Visibility = Visibility.Hidden;
             usernameTb.IsEnabled = false;
             passwordTb.IsEnabled = false;
             emailTb.IsEnabled = false;
-            interestsTb.IsEnabled = false;
+            hobbiesLst.IsEnabled = false;
         }
         public bool Save()
         {
@@ -72,7 +116,8 @@ namespace MeetMe_.MeetMePlus.MyAcc
             usernameDot.Visibility = Visibility.Hidden;
             passwordTb.IsEnabled = false;
             emailTb.IsEnabled = false;
-            interestsTb.IsEnabled = false;
+            hobbiesLst.IsEnabled = false;
+            AddInterests();
             ServiceClient serviceClient = new ServiceClient();
             serviceClient.Users_Update(mainUser);
             return hasError;

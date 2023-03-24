@@ -27,7 +27,8 @@ namespace MeetMe_.Register
         {
             InitializeComponent();
             newUser = new User();
-            birthdayDp.DisplayDateEnd=DateTime.Now.AddYears(-14);
+            birthdayDp.DisplayDateEnd=DateTime.Now.AddYears(-8);
+            birthdayDp.DisplayDateStart = DateTime.Now.AddYears(-100);
             this.DataContext = newUser;
             newUser.ProfPicExt = "jpg";
         }
@@ -45,6 +46,18 @@ namespace MeetMe_.Register
             if (firstNameTb.Text == "" || lastNameTb.Text == "" || birthdayDp.Text == "")
             {
                 MessageBox.Show("You must fill all fields", "Error");
+                return;
+            }
+            int selectedYear = int.Parse(birthdayDp.Text.Split('/')[2]);
+            if (2022- selectedYear > 100)
+            {
+                MessageBox.Show("Check your birth year... no one is that old", "Error");
+                return;
+            }
+            if (2022 - selectedYear < 8)
+            {
+                MessageBox.Show("Sorry... Too young", "Error");
+                return;
             }
             else
             {

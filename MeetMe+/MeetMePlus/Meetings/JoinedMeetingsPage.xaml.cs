@@ -23,16 +23,18 @@ namespace MeetMe_.MeetMePlus.Meetings
     public partial class JoinedMeetingsPage : Page
     {
         User mainUser;
+        MainMeetingsPage mainMeetingsPage;
         public JoinedMeetingsPage()
         {
             InitializeComponent();
 
         }
 
-        public JoinedMeetingsPage(User user)
+        public JoinedMeetingsPage(User user, MainMeetingsPage mainMeetingsPage)
         {
             InitializeComponent();
             mainUser = user;
+            this.mainMeetingsPage = mainMeetingsPage;
             Load();
         }
 
@@ -43,7 +45,7 @@ namespace MeetMe_.MeetMePlus.Meetings
             ParticipentsInMeetingList participentInMeetings = serviceClient.ParticipentsInMeeting_SelectByUser(mainUser);
             foreach (ParticipentInMeeting participentInMeeting in participentInMeetings)
             {
-                MeetingCard meetingCard = new MeetingCard(participentInMeeting);
+                MeetingCard meetingCard = new MeetingCard(participentInMeeting, mainMeetingsPage);
                 meetingsLst.Children.Add(meetingCard);
             }
         }

@@ -1,4 +1,5 @@
 ﻿using MeetMe_.ClientService;
+using MeetMe_.MeetMePlus.FriendsSug;
 using MeetMe_.MeetMePlus.MyAcc;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,8 @@ namespace MeetMe_.MeetMePlus
         ProfInfo profInfoPage;
         string imagePath;
         int page;
-        public MyAccount(User user)
+        List<Page> pages;
+        public MyAccount(User user, MeetMePlus meetMePlus)
         {
             InitializeComponent();
             mainUser = user;
@@ -37,6 +39,7 @@ namespace MeetMe_.MeetMePlus
             profInfoPage = new ProfInfo(user,this);
             infoFrame.Navigate(userInfoPage);
             page = 1;
+            pages=meetMePlus.GetUserPages();
             profPic.ImageSource = (BitmapImage)ImageUtils.LoadProfPic(mainUser);
         }
 
@@ -55,6 +58,9 @@ namespace MeetMe_.MeetMePlus
                 bool error = profInfoPage.Save();
                 if (error)
                     return;
+                FriendSuggestionsPage friendSuggestionsPage = pages[6] as FriendSuggestionsPage;
+                friendSuggestionsPage.Load();
+
             }
             editBtnsPanel.Visibility = Visibility.Hidden;
             infoSwitchPanel.Visibility = Visibility.Visible;
@@ -96,13 +102,14 @@ namespace MeetMe_.MeetMePlus
         private void EditImgBtn_Click(object sender, RoutedEventArgs e)
         {
             ServiceClient serviceClient = new ServiceClient();
-            profPic.ImageSource = null;
             imagePath = ImageUtils.UpdateImage_Dialog(mainUser);
-            ImageConverter imageConverter = new ImageConverter();
-            profPic.ImageSource = (ImageSource)imageConverter.Convert(imagePath,
-                null, null, CultureInfo.CurrentCulture);
-            mainUser.ProfPicExt = System.IO.Path.GetExtension(imagePath);
-            serviceClient.Users_Update(mainUser);
+            if (imagePath!=null)
+            {
+                mainUser.ProfPicExt = System.IO.Path.GetExtension(imagePath);
+                serviceClient.Users_Update(mainUser);
+            }
+            mainUser = serviceClient.User_SelectById(mainUser.Id);
+            profPic.ImageSource = (ImageSource)ImageUtils.LoadProfPic(mainUser);
         }
     }
 }

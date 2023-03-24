@@ -1,4 +1,5 @@
 ﻿using MeetMe_.ClientService;
+using MeetMe_.MeetMePlus.Meetings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace MeetMe_.MeetMePlus.NewMeeting
             InitializeComponent();
             mainUser = user;
             mainMeeting = meeting;
-            pages = meetMePlus.GetPages();
+            pages = meetMePlus.GetUserPages();
             meetMePlusMain = meetMePlus;
         }
 
@@ -52,6 +53,13 @@ namespace MeetMe_.MeetMePlus.NewMeeting
             MeetMe_.ClientService.ServiceClient serviceClient = new MeetMe_.ClientService.ServiceClient();
             serviceClient.Meetings_Insert(mainMeeting);
             MessageBox.Show("Meeting created successfuly", "Congrats!");
+            pages[3] = new CreateMeeting(meetMePlusMain, mainUser);
+            meetMePlusMain.MenuLstView.SelectedIndex = 0;
+            meetMePlusMain.AppFrame.Navigate(pages[0]);
+            MainMeetingsPage mainMeetingsPage = pages[5] as MainMeetingsPage;
+            List<Page> meetingPages = mainMeetingsPage.GetMeetingsPages();
+            MyMeetingsPage myMeetingsPage = meetingPages[1] as MyMeetingsPage;
+            myMeetingsPage.Load();
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)

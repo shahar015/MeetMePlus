@@ -1,15 +1,48 @@
-﻿<Page x:Class="MeetMe_.MeetMePlus.FriendsSug.FriendSuggestionsPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:MeetMe_.MeetMePlus.FriendsSug"
-      FontFamily="{DynamicResource MaterialDesignFont}"
-      mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="800"
-      Title="FriendSuggestionsPage">
-
-    <WrapPanel Name="usersLst" Orientation="Horizontal">
-
-    </WrapPanel>
+﻿<Page
+    x:Class="MeetMe_.MeetMePlus.FriendsSug.FriendSuggestionsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MeetMe_.MeetMePlus.FriendsSug"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="FriendSuggestionsPage"
+    d:DesignHeight="800"
+    d:DesignWidth="800"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    mc:Ignorable="d">
+    <Grid>
+        <TextBox
+            Name="tbSearch"
+            Width="335"
+            Margin="0,50,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            materialDesign:HintAssist.HelperText="Search for a user's full name/ username/ email"
+            materialDesign:HintAssist.Hint="Search User..."
+            materialDesign:HintAssist.HintOpacity="100"
+            Foreground="Black"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}" TextChanged="TextBox_TextChanged" />
+        <TextBlock
+            Name="noSugTb"
+            Margin="0,0,150,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="24"
+            Foreground="Gray"
+            Text="There are currently no suggestions for you" />
+        <TextBlock
+            Name="noResultTb"
+            Margin="0,0,150,0"
+            Visibility="Hidden"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="24"
+            Foreground="Gray"
+            Text="There are currently no results for your search" />
+        <WrapPanel
+            Name="usersLst"
+            Margin="0,150,0,0"
+            Orientation="Horizontal" />
+    </Grid>
 </Page>

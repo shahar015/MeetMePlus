@@ -1,71 +1,175 @@
-﻿<Page x:Class="MeetMe_.MeetMePlus.MyAcc.ProfInfo"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      FontFamily="{DynamicResource MaterialDesignFont}"
-      xmlns:local="clr-namespace:MeetMe_.MeetMePlus.MyAcc" xmlns:local1="clr-namespace:MeetMe_"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProfInfo">
+﻿<Page
+    x:Class="MeetMe_.MeetMePlus.MyAcc.ProfInfo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MeetMe_.MeetMePlus.MyAcc"
+    xmlns:local1="clr-namespace:MeetMe_"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ProfInfo"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    mc:Ignorable="d">
     <Page.Resources>
-        <!--The tool tip for the TextBox to display the validation error message.-->
+        <!--  The tool tip for the TextBox to display the validation error message.  -->
         <Style x:Key="textBoxInError" TargetType="TextBox">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="true">
-                    <Setter Property="ToolTip"
-                     Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                     Path=(Validation.Errors)[0].ErrorContent}"/>
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}" />
                 </Trigger>
             </Style.Triggers>
         </Style>
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock  Text="Username:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Margin="20,0,0,0" Foreground="LightGray"/>
-        
-        <StackPanel Grid.Column="1" Grid.Row="0" Margin="20,0,0,0" Orientation="Horizontal" >
-            <TextBox x:Name="usernameTb" IsEnabled="False"  FontSize="50"  Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" LostFocus="usernameTb_LostFocus">
-                <Binding Path="Username" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="50"
+            Foreground="LightGray"
+            Text="Username:" />
+
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="20,0,0,0"
+            Orientation="Horizontal">
+            <TextBox
+                x:Name="usernameTb"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="50"
+                Foreground="White"
+                IsEnabled="False"
+                LostFocus="usernameTb_LostFocus">
+                <Binding
+                    Path="Username"
+                    UpdateSourceTrigger="PropertyChanged"
+                    ValidatesOnDataErrors="True">
                     <Binding.ValidationRules>
-                        <local1:ValidUsername/>
+                        <local1:ValidUsername />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox>
-            <materialDesign:PackIcon Name="usernameDot" Kind="Dot" Foreground="Red" Height="100" Width="100" Margin="0,13,0,0" Visibility="Hidden"/>
+            <materialDesign:PackIcon
+                Name="usernameDot"
+                Width="100"
+                Height="100"
+                Margin="0,13,0,0"
+                Foreground="Red"
+                Kind="Dot"
+                Visibility="Hidden" />
         </StackPanel>
-        
-        <TextBlock Text="Password:" Grid.Column="0" Grid.Row="1" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="LightGray"/>
-        <TextBox x:Name="passwordTb" IsEnabled="False" Grid.Column="1" Grid.Row="1" FontSize="50" Margin="20,0,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <Binding Path="Password" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="50"
+            Foreground="LightGray"
+            Text="Password:" />
+        <TextBox
+            x:Name="passwordTb"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="50"
+            Foreground="White"
+            IsEnabled="False">
+            <Binding
+                Path="Password"
+                UpdateSourceTrigger="PropertyChanged"
+                ValidatesOnDataErrors="True">
                 <Binding.ValidationRules>
-                    <local1:ValidPassword/>
+                    <local1:ValidPassword />
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
 
 
-        <TextBlock  Text="Email:" Grid.Column="0" Grid.Row="2" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="LightGray" />
-        <TextBox x:Name="emailTb" IsEnabled="False" Grid.Column="1" Grid.Row="2" FontSize="35" Margin="20,0,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap">
-            <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="50"
+            Foreground="LightGray"
+            Text="Email:" />
+        <TextBox
+            x:Name="emailTb"
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="35"
+            Foreground="White"
+            IsEnabled="False"
+            TextWrapping="Wrap">
+            <Binding
+                Path="Email"
+                UpdateSourceTrigger="PropertyChanged"
+                ValidatesOnDataErrors="True">
                 <Binding.ValidationRules>
-                    <local1:ValidEmail/>
+                    <local1:ValidEmail />
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
 
-        <TextBlock Text="Interests:" Grid.Column="0" Grid.Row="3" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="LightGray"/>
-        <TextBox x:Name="interestsTb" Text="{Binding Path=Interests}" IsEnabled="False" Grid.Column="1" Grid.Row="3" FontSize="35" Margin="20,0,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="50"
+            Foreground="LightGray"
+            Text="Interests:" />
+        <ListBox
+            IsEnabled="False"
+            Name="hobbiesLst"
+            Grid.Row="3"
+            Grid.Column="1"
+            Width="360"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Foreground="White"
+            SelectionMode="Multiple"
+            Style="{StaticResource MaterialDesignFilterChipListBox}">
+            <ListBox.Resources>
+                <Style TargetType="materialDesign:Chip">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                <GradientStop Offset="0" Color="#FF009CFF" />
+                                <GradientStop Offset="1" Color="#FF0067FB" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Margin" Value="10" />
+                </Style>
+            </ListBox.Resources>
+        </ListBox>
     </Grid>
 
 </Page>

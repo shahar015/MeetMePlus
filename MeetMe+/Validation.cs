@@ -17,14 +17,17 @@ namespace MeetMe_
             try
             {
                 string name = value.ToString();
-                if(name.Length<2)
+                if (name.Length < 2)
                     return new ValidationResult(false, "Minimum of 2 characters");
                 if (name.Length > 20)
                     return new ValidationResult(false, "Maximum of 20 characters");
                 for (int i = 0; i < name.Length; i++)
                 {
-                    if (!Char.IsLetter(name[i])& !Char.IsWhiteSpace(name[i]) & name[i]!='-')
-                        return new ValidationResult(false, "Only letters and some special charecters: -");
+                    if (!Char.IsLetter(name[i]) & !Char.IsWhiteSpace(name[i]) & name[i] != '-')
+                        return new ValidationResult(
+                            false,
+                            "Only letters and some special charecters: -"
+                        );
                 }
             }
             catch (Exception)
@@ -48,15 +51,23 @@ namespace MeetMe_
                     return new ValidationResult(false, "Maximum of 25 characters");
                 for (int i = 0; i < username.Length; i++)
                 {
-                    if (!Char.IsLetterOrDigit(username[i]) && !Char.IsWhiteSpace(username[i]) && username[i] != '_' && username[i] != '.')
-                        return new ValidationResult(false, "Only letters, numbers and some special charecters: _ , .");
+                    if (
+                        !Char.IsLetterOrDigit(username[i])
+                        && !Char.IsWhiteSpace(username[i])
+                        && username[i] != '_'
+                        && username[i] != '.'
+                    )
+                        return new ValidationResult(
+                            false,
+                            "Only letters, numbers and some special charecters: _ , ."
+                        );
                 }
                 ServiceClient serviceClient = new ServiceClient();
                 User user = serviceClient.User_FindUsername(username);
                 if (user != null)
                     return new ValidationResult(false, "username already exists");
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return new ValidationResult(false, "Invalid charecters");
             }
@@ -68,9 +79,9 @@ namespace MeetMe_
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            bool isUpper=false;
-            bool isLower=false;
-            bool isNum=false;
+            bool isUpper = false;
+            bool isLower = false;
+            bool isNum = false;
             try
             {
                 string password = value.ToString();
@@ -80,8 +91,19 @@ namespace MeetMe_
                     return new ValidationResult(false, "Maximum of 20 characters");
                 for (int i = 0; i < password.Length; i++)
                 {
-                    if (!Char.IsLetter(password[i]) || !Char.IsWhiteSpace(password[i]) || !Char.IsNumber(password[i]) || password[i] != '!' || password[i] != '@' || password[i] != '.' || password[i] != '&')
-                        return new ValidationResult(false, "Only letters, numbers and some special charecters: !, . , @ , &");
+                    if (
+                        !Char.IsLetter(password[i])
+                        && !Char.IsWhiteSpace(password[i])
+                        && !Char.IsNumber(password[i])
+                        && password[i] != '!'
+                        && password[i] != '@'
+                        && password[i] != '.'
+                        && password[i] != '&'
+                    )
+                        return new ValidationResult(
+                            false,
+                            "Only letters, numbers and some special charecters: !, . , @ , &"
+                        );
                     if (Char.IsUpper(password[i]))
                         isUpper = true;
                     if (Char.IsLower(password[i]))
@@ -111,9 +133,9 @@ namespace MeetMe_
             try
             {
                 string email = value.ToString();
-                if(email.Length<6)
+                if (email.Length < 6)
                     return new ValidationResult(false, "Invalid email");
-                if (email.Length >255)
+                if (email.Length > 255)
                     return new ValidationResult(false, "Invalid email");
                 MailAddress m = new MailAddress(email);
             }
@@ -131,8 +153,8 @@ namespace MeetMe_
         {
             try
             {
-                DateTime dt=DateTime.Parse(value.ToString());
-                if (dt.CompareTo(DateTime.Today.AddYears(-10))>=0)
+                DateTime dt = DateTime.Parse(value.ToString());
+                if (dt.CompareTo(DateTime.Today.AddYears(-10)) >= 0)
                     return new ValidationResult(false, "too young");
             }
             catch (FormatException)
@@ -150,9 +172,9 @@ namespace MeetMe_
             try
             {
                 string phone = value.ToString();
-                if (phone.Length < 10 || phone.Length>10)
+                if (phone.Length < 10 || phone.Length > 10)
                     return new ValidationResult(false, "Must be 10 numbers");
-              
+
                 for (int i = 0; i < phone.Length; i++)
                 {
                     if (!Char.IsNumber(phone[i]))

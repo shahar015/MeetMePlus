@@ -32,7 +32,7 @@ namespace MeetMe_.MeetMePlus.MyAcc
         {
             InitializeComponent();
             mainUser = user;
-            defaultUser = new User { Id = mainUser.Id, FirstName = mainUser.FirstName, LastName = mainUser.LastName, Birthday = mainUser.Birthday, Gender = mainUser.Gender, Email = mainUser.Email, Phone = mainUser.Phone, Username = mainUser.Username, Password = mainUser.Password, Interests = mainUser.Interests };
+            defaultUser = new User { Id = mainUser.Id, FirstName = mainUser.FirstName, LastName = mainUser.LastName, Birthday = mainUser.Birthday, Gender = mainUser.Gender, Email = mainUser.Email, Phone = mainUser.Phone, Username = mainUser.Username, Password = mainUser.Password, Interests = mainUser.Interests, UserType=mainUser.UserType, ProfPicExt=mainUser.ProfPicExt };
             this.DataContext = mainUser;
             bDayTb.Text = mainUser.Birthday.ToShortDateString();
             MaleRb.IsChecked = mainUser.Gender;
@@ -47,7 +47,7 @@ namespace MeetMe_.MeetMePlus.MyAcc
         }
         public void Cancel()
         {
-            mainUser = new User { Id = defaultUser.Id, FirstName = defaultUser.FirstName, LastName = defaultUser.LastName, Birthday = defaultUser.Birthday, Gender = defaultUser.Gender, Email = defaultUser.Email, Phone = defaultUser.Phone, Username = defaultUser.Username, Password = defaultUser.Password, Interests = defaultUser.Interests };
+            mainUser = new User { Id = defaultUser.Id, FirstName = defaultUser.FirstName, LastName = defaultUser.LastName, Birthday = defaultUser.Birthday, Gender = defaultUser.Gender, Email = defaultUser.Email, Phone = defaultUser.Phone, Username = defaultUser.Username, Password = defaultUser.Password, Interests = defaultUser.Interests, UserType = defaultUser.UserType, ProfPicExt = defaultUser.ProfPicExt };
             this.DataContext = null;
             this.DataContext = mainUser;
             bDayTb.Text = mainUser.Birthday.ToShortDateString();

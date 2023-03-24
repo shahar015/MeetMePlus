@@ -24,6 +24,7 @@ namespace MeetMe_.MeetMePlus.Chat.Themes
         FriendsList noChatFriends;
         private User otherUser;
         User mainUser;
+
         public NewChat(ChatsList chats, User user)
         {
             InitializeComponent();
@@ -91,7 +92,7 @@ namespace MeetMe_.MeetMePlus.Chat.Themes
         private void AddChatBtn_Click(object sender, RoutedEventArgs e)
         {
             ServiceClient client = new ServiceClient();
-            ClientService.Chat chat=new ClientService.Chat();
+            ClientService.Chat chat = new ClientService.Chat();
             chat.User1 = mainUser;
             chat.User2 = otherUser;
             client.Chat_Insert(chat);

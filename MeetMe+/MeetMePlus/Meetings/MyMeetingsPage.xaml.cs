@@ -25,11 +25,13 @@ namespace MeetMe_.MeetMePlus.Meetings
 
         User mainUser;
         MeetingsList meetingsList;
+        MainMeetingsPage mainMeetingsPage;
 
-        public MyMeetingsPage(User user)
+        public MyMeetingsPage(User user, MainMeetingsPage mainMeetingsPage)
         {
             InitializeComponent();
             mainUser = user;
+            this.mainMeetingsPage = mainMeetingsPage;
             Load();
         }
 
@@ -40,7 +42,7 @@ namespace MeetMe_.MeetMePlus.Meetings
             meetingsList = serviceClient.Meetings_SelectByUser(mainUser);
             foreach (Meeting meeting1 in meetingsList)
             {
-                MeetingCard meetingCard = new MeetingCard(mainUser, meeting1);
+                MeetingCard meetingCard = new MeetingCard(mainUser, meeting1, mainMeetingsPage);
                 meetingsLst.Children.Add(meetingCard);
             }
         }

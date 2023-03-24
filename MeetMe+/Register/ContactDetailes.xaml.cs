@@ -55,8 +55,8 @@ namespace MeetMe_.Register
                 newUser.Email = emailTb.Text;
                 newUser.Phone = phoneTb.Text;
 
-                Final final = new Final(newUser);
-                this.NavigationService.Navigate(final);
+                Interests interests = new Interests(newUser);
+                this.NavigationService.Navigate(interests);
             }
             
         }

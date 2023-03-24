@@ -1,28 +1,18 @@
-﻿<UserControl x:Class="MeetMe_.MeetMePlus.FriendsSug.Themes.FriendSugCard"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:local="clr-namespace:MeetMe_.MeetMePlus.FriendsSug.Themes"
-             mc:Ignorable="d" 
-            d:DesignHeight="300"
+﻿<UserControl
+    x:Class="MeetMe_.MeetMePlus.FriendsSug.Themes.FriendSugCard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MeetMe_.MeetMePlus.FriendsSug.Themes"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
     d:DesignWidth="250"
-    FontFamily="{DynamicResource MaterialDesignFont}">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Card.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Popupbox.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    mc:Ignorable="d">
     <Grid Margin="10">
 
-        <materialDesign:Card 
+        <materialDesign:Card
             Width="230"
             Height="280"
             Padding="8"
@@ -37,37 +27,66 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Orientation="Vertical">
-                <Button Width="150"
-                    Height="150" Background="Transparent" BorderBrush="Transparent">
-                <Border VerticalAlignment="Center" HorizontalAlignment="Center"
-                    Width="115"
-                    Height="115"
-                    BorderBrush="White"
-                    BorderThickness="0"
-                    CornerRadius="1000">
-                    <Border.Background>
-                        <ImageBrush x:Name="profPic" Stretch="Fill" />
-                    </Border.Background>
-                    <Border.Effect>
-                        <DropShadowEffect
-                            BlurRadius="5"
-                            Opacity=".5"
-                            ShadowDepth="3" />
-                    </Border.Effect>
-                </Border>
+                <Button
+                    Width="150"
+                    Height="150"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Click="Button_Click">
+                    <Border
+                        Width="115"
+                        Height="115"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        BorderBrush="White"
+                        BorderThickness="0"
+                        CornerRadius="1000">
+                        <Border.Background>
+                            <ImageBrush x:Name="profPic" Stretch="Fill" />
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="5"
+                                Opacity=".5"
+                                ShadowDepth="3" />
+                        </Border.Effect>
+                    </Border>
                 </Button>
-                <StackPanel Orientation="Vertical" Margin="0,0,0,5">
-                    <TextBlock HorizontalAlignment="Center" Foreground="White" Margin="0,0,0,9"  FontSize="25"> <Run Text="{Binding FirstName}"/> <Run Text="{Binding LastName}"/></TextBlock>
-                    <TextBlock HorizontalAlignment="Center" Foreground="White" FontSize="14" Text="Common Interested:"/>
-                    <TextBlock Name="InterestsTb" TextAlignment="Center" Foreground="White" TextWrapping="WrapWithOverflow"/>
+                <StackPanel Margin="0,0,0,5" Orientation="Vertical" >
+                    <TextBlock
+                        Margin="0,0,0,9"
+                        HorizontalAlignment="Center"
+                        FontSize="25"
+                        Foreground="White"> <Run Text="{Binding FirstName}" /> <Run Text="{Binding LastName}" /></TextBlock>
+                    <TextBlock
+                        Name="InterestsTitle"
+                        HorizontalAlignment="Center"
+                        FontSize="14"
+                        Foreground="White"
+                        Text="Common Interested:" />
+                    <TextBlock
+                        Name="InterestsTb"
+                        Foreground="White"
+                        TextAlignment="Center"
+                        TextWrapping="WrapWithOverflow" />
 
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Button x:Name="AddFriendBtn" Click="AddFriendBtn_Click" Content="Add Friend"  materialDesign:ButtonAssist.CornerRadius="15" Margin="10" Width="105" Height="32" FontSize="14" Style="{StaticResource MaterialDesignRaisedDarkButton}" BorderThickness="0" >
+                    <Button
+                        x:Name="AddFriendBtn"
+                        Width="105"
+                        Height="32"
+                        Margin="10"
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        BorderThickness="0"
+                        Click="AddFriendBtn_Click"
+                        Content="Add Friend"
+                        FontSize="14"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}">
                         <Button.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF009CFF" Offset="0"/>
-                                <GradientStop Color="#FF0067FB" Offset="1"/>
+                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                <GradientStop Offset="0" Color="#FF009CFF" />
+                                <GradientStop Offset="1" Color="#FF0067FB" />
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>

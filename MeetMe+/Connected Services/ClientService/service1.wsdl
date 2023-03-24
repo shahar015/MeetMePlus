@@ -44,6 +44,18 @@
   <wsdl:message name="IService_Friend_SelectByUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:Friend_SelectByUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_Friends_DeleteByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:Friends_DeleteByUser" />
+  </wsdl:message>
+  <wsdl:message name="IService_Friends_DeleteByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Friends_DeleteByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_Friend_SelectByUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:Friend_SelectByUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService_Friend_SelectByUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Friend_SelectByUsersResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_Users_SelectAll_InputMessage">
     <wsdl:part name="parameters" element="tns:Users_SelectAll" />
   </wsdl:message>
@@ -140,6 +152,12 @@
   <wsdl:message name="IService_Meetings_SelectAllBesidesUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:Meetings_SelectAllBesidesUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_Meetings_DeleteByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:Meetings_DeleteByUser" />
+  </wsdl:message>
+  <wsdl:message name="IService_Meetings_DeleteByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Meetings_DeleteByUserResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_Messages_SelectAll_InputMessage">
     <wsdl:part name="parameters" element="tns:Messages_SelectAll" />
   </wsdl:message>
@@ -188,6 +206,12 @@
   <wsdl:message name="IService_Message_DeleteFromChat_OutputMessage">
     <wsdl:part name="parameters" element="tns:Message_DeleteFromChatResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_Messages_DeleteByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:Messages_DeleteByUser" />
+  </wsdl:message>
+  <wsdl:message name="IService_Messages_DeleteByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Messages_DeleteByUserResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_ParticipentsInMeeting_SelectAll_InputMessage">
     <wsdl:part name="parameters" element="tns:ParticipentsInMeeting_SelectAll" />
   </wsdl:message>
@@ -206,6 +230,12 @@
   <wsdl:message name="IService_ParticipentsInMeeting_SelectByUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:ParticipentsInMeeting_SelectByUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_ParticipentsInMeeting_SelectByMeeting_InputMessage">
+    <wsdl:part name="parameters" element="tns:ParticipentsInMeeting_SelectByMeeting" />
+  </wsdl:message>
+  <wsdl:message name="IService_ParticipentsInMeeting_SelectByMeeting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ParticipentsInMeeting_SelectByMeetingResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_ParticipentInMeeting_Insert_InputMessage">
     <wsdl:part name="parameters" element="tns:ParticipentInMeeting_Insert" />
   </wsdl:message>
@@ -223,6 +253,18 @@
   </wsdl:message>
   <wsdl:message name="IService_ParticipentInMeeting_Delete_OutputMessage">
     <wsdl:part name="parameters" element="tns:ParticipentInMeeting_DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_ParticipentsInMeeting_DeleteByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ParticipentsInMeeting_DeleteByUser" />
+  </wsdl:message>
+  <wsdl:message name="IService_ParticipentsInMeeting_DeleteByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ParticipentsInMeeting_DeleteByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_ParticipentsInMeeting_DeleteByMeeting_InputMessage">
+    <wsdl:part name="parameters" element="tns:ParticipentsInMeeting_DeleteByMeeting" />
+  </wsdl:message>
+  <wsdl:message name="IService_ParticipentsInMeeting_DeleteByMeeting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ParticipentsInMeeting_DeleteByMeetingResponse" />
   </wsdl:message>
   <wsdl:message name="IService_Chat_SelectAll_InputMessage">
     <wsdl:part name="parameters" element="tns:Chat_SelectAll" />
@@ -272,11 +314,11 @@
   <wsdl:message name="IService_Chat_Delete_OutputMessage">
     <wsdl:part name="parameters" element="tns:Chat_DeleteResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_GetIamge_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetIamge" />
+  <wsdl:message name="IService_GetProfPic_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfPic" />
   </wsdl:message>
-  <wsdl:message name="IService_GetIamge_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetIamgeResponse" />
+  <wsdl:message name="IService_GetProfPic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfPicResponse" />
   </wsdl:message>
   <wsdl:message name="IService_SaveImage_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveImage" />
@@ -289,6 +331,36 @@
   </wsdl:message>
   <wsdl:message name="IService_DeleteImage_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserTypes_SelectAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserTypes_SelectAll" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserTypes_SelectAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserTypes_SelectAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserType_SelectById_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserType_SelectById" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserType_SelectById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserType_SelectByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserTypes_Insert_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserTypes_Insert" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserTypes_Insert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserTypes_InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserTypes_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserTypes_Update" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserTypes_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserTypes_UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserTypes_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserTypes_Delete" />
+  </wsdl:message>
+  <wsdl:message name="IService_UserTypes_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserTypes_DeleteResponse" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="Friends_SelectAll">
@@ -314,6 +386,14 @@
     <wsdl:operation name="Friend_SelectByUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Friend_SelectByUser" message="tns:IService_Friend_SelectByUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/Friend_SelectByUserResponse" message="tns:IService_Friend_SelectByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Friends_DeleteByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/Friends_DeleteByUser" message="tns:IService_Friends_DeleteByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/Friends_DeleteByUserResponse" message="tns:IService_Friends_DeleteByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Friend_SelectByUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/Friend_SelectByUsers" message="tns:IService_Friend_SelectByUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/Friend_SelectByUsersResponse" message="tns:IService_Friend_SelectByUsers_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Users_SelectAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Users_SelectAll" message="tns:IService_Users_SelectAll_InputMessage" />
@@ -379,6 +459,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Meetings_SelectAllBesidesUser" message="tns:IService_Meetings_SelectAllBesidesUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/Meetings_SelectAllBesidesUserResponse" message="tns:IService_Meetings_SelectAllBesidesUser_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="Meetings_DeleteByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/Meetings_DeleteByUser" message="tns:IService_Meetings_DeleteByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/Meetings_DeleteByUserResponse" message="tns:IService_Meetings_DeleteByUser_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Messages_SelectAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Messages_SelectAll" message="tns:IService_Messages_SelectAll_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/Messages_SelectAllResponse" message="tns:IService_Messages_SelectAll_OutputMessage" />
@@ -411,6 +495,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Message_DeleteFromChat" message="tns:IService_Message_DeleteFromChat_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/Message_DeleteFromChatResponse" message="tns:IService_Message_DeleteFromChat_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="Messages_DeleteByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/Messages_DeleteByUser" message="tns:IService_Messages_DeleteByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/Messages_DeleteByUserResponse" message="tns:IService_Messages_DeleteByUser_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ParticipentsInMeeting_SelectAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/ParticipentsInMeeting_SelectAll" message="tns:IService_ParticipentsInMeeting_SelectAll_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/ParticipentsInMeeting_SelectAllResponse" message="tns:IService_ParticipentsInMeeting_SelectAll_OutputMessage" />
@@ -423,6 +511,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/ParticipentsInMeeting_SelectByUser" message="tns:IService_ParticipentsInMeeting_SelectByUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/ParticipentsInMeeting_SelectByUserResponse" message="tns:IService_ParticipentsInMeeting_SelectByUser_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ParticipentsInMeeting_SelectByMeeting">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/ParticipentsInMeeting_SelectByMeeting" message="tns:IService_ParticipentsInMeeting_SelectByMeeting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/ParticipentsInMeeting_SelectByMeetingResponse" message="tns:IService_ParticipentsInMeeting_SelectByMeeting_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ParticipentInMeeting_Insert">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/ParticipentInMeeting_Insert" message="tns:IService_ParticipentInMeeting_Insert_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/ParticipentInMeeting_InsertResponse" message="tns:IService_ParticipentInMeeting_Insert_OutputMessage" />
@@ -434,6 +526,14 @@
     <wsdl:operation name="ParticipentInMeeting_Delete">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/ParticipentInMeeting_Delete" message="tns:IService_ParticipentInMeeting_Delete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/ParticipentInMeeting_DeleteResponse" message="tns:IService_ParticipentInMeeting_Delete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ParticipentsInMeeting_DeleteByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/ParticipentsInMeeting_DeleteByUser" message="tns:IService_ParticipentsInMeeting_DeleteByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/ParticipentsInMeeting_DeleteByUserResponse" message="tns:IService_ParticipentsInMeeting_DeleteByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ParticipentsInMeeting_DeleteByMeeting">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/ParticipentsInMeeting_DeleteByMeeting" message="tns:IService_ParticipentsInMeeting_DeleteByMeeting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/ParticipentsInMeeting_DeleteByMeetingResponse" message="tns:IService_ParticipentsInMeeting_DeleteByMeeting_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Chat_SelectAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Chat_SelectAll" message="tns:IService_Chat_SelectAll_InputMessage" />
@@ -467,9 +567,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Chat_Delete" message="tns:IService_Chat_Delete_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/Chat_DeleteResponse" message="tns:IService_Chat_Delete_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetIamge">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetIamge" message="tns:IService_GetIamge_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetIamgeResponse" message="tns:IService_GetIamge_OutputMessage" />
+    <wsdl:operation name="GetProfPic">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetProfPic" message="tns:IService_GetProfPic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetProfPicResponse" message="tns:IService_GetProfPic_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SaveImage">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SaveImage" message="tns:IService_SaveImage_InputMessage" />
@@ -478,6 +578,26 @@
     <wsdl:operation name="DeleteImage">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteImage" message="tns:IService_DeleteImage_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteImageResponse" message="tns:IService_DeleteImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserTypes_SelectAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UserTypes_SelectAll" message="tns:IService_UserTypes_SelectAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UserTypes_SelectAllResponse" message="tns:IService_UserTypes_SelectAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserType_SelectById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UserType_SelectById" message="tns:IService_UserType_SelectById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UserType_SelectByIdResponse" message="tns:IService_UserType_SelectById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserTypes_Insert">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UserTypes_Insert" message="tns:IService_UserTypes_Insert_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UserTypes_InsertResponse" message="tns:IService_UserTypes_Insert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserTypes_Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UserTypes_Update" message="tns:IService_UserTypes_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UserTypes_UpdateResponse" message="tns:IService_UserTypes_Update_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserTypes_Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UserTypes_Delete" message="tns:IService_UserTypes_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UserTypes_DeleteResponse" message="tns:IService_UserTypes_Delete_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -529,6 +649,24 @@
     </wsdl:operation>
     <wsdl:operation name="Friend_SelectByUser">
       <soap:operation soapAction="http://tempuri.org/IService/Friend_SelectByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Friends_DeleteByUser">
+      <soap:operation soapAction="http://tempuri.org/IService/Friends_DeleteByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Friend_SelectByUsers">
+      <soap:operation soapAction="http://tempuri.org/IService/Friend_SelectByUsers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -680,6 +818,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Meetings_DeleteByUser">
+      <soap:operation soapAction="http://tempuri.org/IService/Meetings_DeleteByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Messages_SelectAll">
       <soap:operation soapAction="http://tempuri.org/IService/Messages_SelectAll" style="document" />
       <wsdl:input>
@@ -752,6 +899,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Messages_DeleteByUser">
+      <soap:operation soapAction="http://tempuri.org/IService/Messages_DeleteByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ParticipentsInMeeting_SelectAll">
       <soap:operation soapAction="http://tempuri.org/IService/ParticipentsInMeeting_SelectAll" style="document" />
       <wsdl:input>
@@ -779,6 +935,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ParticipentsInMeeting_SelectByMeeting">
+      <soap:operation soapAction="http://tempuri.org/IService/ParticipentsInMeeting_SelectByMeeting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ParticipentInMeeting_Insert">
       <soap:operation soapAction="http://tempuri.org/IService/ParticipentInMeeting_Insert" style="document" />
       <wsdl:input>
@@ -799,6 +964,24 @@
     </wsdl:operation>
     <wsdl:operation name="ParticipentInMeeting_Delete">
       <soap:operation soapAction="http://tempuri.org/IService/ParticipentInMeeting_Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParticipentsInMeeting_DeleteByUser">
+      <soap:operation soapAction="http://tempuri.org/IService/ParticipentsInMeeting_DeleteByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParticipentsInMeeting_DeleteByMeeting">
+      <soap:operation soapAction="http://tempuri.org/IService/ParticipentsInMeeting_DeleteByMeeting" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -878,8 +1061,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetIamge">
-      <soap:operation soapAction="http://tempuri.org/IService/GetIamge" style="document" />
+    <wsdl:operation name="GetProfPic">
+      <soap:operation soapAction="http://tempuri.org/IService/GetProfPic" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -898,6 +1081,51 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteImage">
       <soap:operation soapAction="http://tempuri.org/IService/DeleteImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserTypes_SelectAll">
+      <soap:operation soapAction="http://tempuri.org/IService/UserTypes_SelectAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserType_SelectById">
+      <soap:operation soapAction="http://tempuri.org/IService/UserType_SelectById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserTypes_Insert">
+      <soap:operation soapAction="http://tempuri.org/IService/UserTypes_Insert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserTypes_Update">
+      <soap:operation soapAction="http://tempuri.org/IService/UserTypes_Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserTypes_Delete">
+      <soap:operation soapAction="http://tempuri.org/IService/UserTypes_Delete" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

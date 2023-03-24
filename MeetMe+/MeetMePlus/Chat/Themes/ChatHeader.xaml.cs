@@ -21,9 +21,9 @@ namespace MeetMe_.MeetMePlus.Chat.Themes
     /// </summary>
     public partial class ChatHeader : UserControl
     {
-
         private User mainUser;
-        private MeetMe_.ClientService.Chat mainChat;
+        private ClientService.Chat mainChat;
+
         public ChatHeader(User user, MeetMe_.ClientService.Chat chat)
         {
             InitializeComponent();
@@ -32,6 +32,7 @@ namespace MeetMe_.MeetMePlus.Chat.Themes
             btnAll.Tag = this;
             LoadUserInfo();
         }
+
         public ChatHeader(User user)
         {
             InitializeComponent();
@@ -39,15 +40,22 @@ namespace MeetMe_.MeetMePlus.Chat.Themes
             btnAll.Tag = this;
             LoadUserInfo();
         }
+
         private void LoadUserInfo()
         {
             tbUserName.Text = mainUser.FirstName + " " + mainUser.LastName;
-            tbUserInfo.Text = "@"+ mainUser.Username;
-            imgUser.ImageSource=ImageUtils.LoadProfPic(mainUser);
+            tbUserInfo.Text = "@" + mainUser.Username;
+            imgUser.ImageSource = ImageUtils.LoadProfPic(mainUser);
         }
 
-        public MeetMe_.ClientService.Chat GetChat() { return mainChat; }
+        public MeetMe_.ClientService.Chat GetChat()
+        {
+            return mainChat;
+        }
 
-        public User GetUser() { return mainUser; }
+        public User GetUser()
+        {
+            return mainUser;
+        }
     }
 }

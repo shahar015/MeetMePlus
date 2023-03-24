@@ -1,42 +1,106 @@
-﻿<Page x:Class="MeetMe_.MeetMePlus.NewMeeting.NewMeetingStart"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      FontFamily="{DynamicResource MaterialDesignFont}"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:MeetMe_.MeetMePlus.NewMeeting"
-      mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="800"
-      Title="NewMeetingStart">
+﻿<Page
+    x:Class="MeetMe_.MeetMePlus.NewMeeting.NewMeetingStart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MeetMe_.MeetMePlus.NewMeeting"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="NewMeetingStart"
+    d:DesignHeight="800"
+    d:DesignWidth="800"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+    mc:Ignorable="d">
 
     <Grid>
         <StackPanel>
-            <TextBox x:Name="meetingNameTb" materialDesign:HintAssist.Hint="Meeting Name" Width="500" Height="50" Foreground="Black" Margin="0,150,0,0" FontSize="40" materialDesign:HintAssist.HelperText="Enter your meeting name" materialDesign:HintAssist.HelperTextFontSize="20"/>
-            <TextBox x:Name="meetingAsdressTb" materialDesign:HintAssist.Hint="Address" MaxLength="10" Width="500" Height="50" Foreground="Black" Margin="0,100,0,0" FontSize="40" materialDesign:HintAssist.HelperText="Enter your address" materialDesign:HintAssist.HelperTextFontSize="20"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,120,0,0">
-                <DatePicker  x:Name="meetingDateTb" Width="250" Height="60" FontSize="20" Margin="0,0,20,0" materialDesign:HintAssist.Hint="Pick Date"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                <materialDesign:TimePicker  x:Name="meetingTimeTb" Width="200" Height="60" FontSize="20" Margin="20,0,0,0" Is24Hours="True" Style="{StaticResource MaterialDesignFloatingHintTimePicker}" materialDesign:HintAssist.Hint="Pick Time" />
+            <TextBox
+                x:Name="meetingNameTb"
+                Width="500"
+                Height="50"
+                Margin="0,150,0,0"
+                materialDesign:HintAssist.HelperText="Enter your meeting name"
+                materialDesign:HintAssist.HelperTextFontSize="20"
+                materialDesign:HintAssist.Hint="Meeting Name"
+                FontSize="40"
+                Foreground="Black" />
+            <TextBox
+                x:Name="meetingAsdressTb"
+                Width="500"
+                Height="50"
+                Margin="0,100,0,0"
+                materialDesign:HintAssist.HelperText="Enter your address"
+                materialDesign:HintAssist.HelperTextFontSize="20"
+                materialDesign:HintAssist.Hint="Address"
+                FontSize="40"
+                Foreground="Black"
+                MaxLength="10" />
+            <StackPanel
+                Margin="0,120,0,0"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <DatePicker
+                    x:Name="meetingDateTb"
+                    Width="250"
+                    Height="60"
+                    Margin="0,0,20,0"
+                    materialDesign:HintAssist.Hint="Pick Date"
+                    FontSize="20"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                <materialDesign:TimePicker
+                    x:Name="meetingTimeTb"
+                    Width="200"
+                    Height="60"
+                    Margin="20,0,0,0"
+                    materialDesign:HintAssist.Hint="Pick Time"
+                    FontSize="20"
+                    Is24Hours="True"
+                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,80,0,0">
-                <Button x:Name="nextBtn" Content="Next"  materialDesign:ButtonAssist.CornerRadius="15" Margin="10" Height="50" FontSize="30" Style="{StaticResource MaterialDesignRaisedDarkButton}" BorderThickness="0" Width="125" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Click="NextBtn_Click">
+            <StackPanel
+                Margin="0,80,0,0"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="nextBtn"
+                    Width="125"
+                    Height="50"
+                    Margin="10"
+                    materialDesign:ButtonAssist.CornerRadius="15"
+                    BorderThickness="0"
+                    Click="NextBtn_Click"
+                    Content="Next"
+                    FontSize="30"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
                     <Button.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FF009CFF" Offset="0"/>
-                            <GradientStop Color="#FF0067FB" Offset="1"/>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Offset="0" Color="#FF009CFF" />
+                            <GradientStop Offset="1" Color="#FF0067FB" />
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <Button x:Name="cancelBtn" Content="Cancel"  materialDesign:ButtonAssist.CornerRadius="15" Margin="10" Height="50" FontSize="30" Style="{StaticResource MaterialDesignRaisedDarkButton}" BorderThickness="0" Width="125" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Click="CancelBtn_Click">
+                <Button
+                    x:Name="cancelBtn"
+                    Width="125"
+                    Height="50"
+                    Margin="10"
+                    materialDesign:ButtonAssist.CornerRadius="15"
+                    BorderThickness="0"
+                    Click="CancelBtn_Click"
+                    Content="Cancel"
+                    FontSize="30"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
                     <Button.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FF009CFF" Offset="0"/>
-                            <GradientStop Color="#FF0067FB" Offset="1"/>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Offset="0" Color="#FF009CFF" />
+                            <GradientStop Offset="1" Color="#FF0067FB" />
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
             </StackPanel>
-            
+
         </StackPanel>
     </Grid>
 </Page>

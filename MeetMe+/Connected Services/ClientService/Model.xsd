@@ -37,12 +37,23 @@
           <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ProfPicExt" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserType" nillable="true" type="tns:UserType" />
           <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="UserType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserType" nillable="true" type="tns:UserType" />
   <xs:complexType name="UsersList">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
@@ -122,4 +133,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ChatsList" nillable="true" type="tns:ChatsList" />
+  <xs:complexType name="UserTypesList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserType" nillable="true" type="tns:UserType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserTypesList" nillable="true" type="tns:UserTypesList" />
 </xs:schema>
